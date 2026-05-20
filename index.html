@@ -168,6 +168,39 @@ section{display:none;} section.active{display:block;}
 .vtitle{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--white);letter-spacing:0.04em;margin:0.4rem 0 0.3rem;}
 .vdesc{font-size:0.83rem;color:var(--text-muted);line-height:1.6;}
 
+/* ADMIN */
+.admin-wrap{max-width:960px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.5rem,4vw,2rem);}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.apanel{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;}
+.apanel h3{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;color:var(--white);letter-spacing:0.04em;margin-bottom:1.2rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
+.bitem{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:0.9rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;}
+.bitem-name{font-size:0.88rem;color:var(--text);font-weight:600;}
+.bitem-meta{font-size:0.72rem;color:var(--text-muted);font-family:'DM Mono',monospace;margin-top:2px;}
+.bitem-type{font-size:0.65rem;padding:2px 8px;border-radius:2px;background:var(--green-glow);color:var(--green);font-family:'DM Mono',monospace;text-transform:uppercase;}
+.slot-item{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:0.9rem 1rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;}
+.btn-del{background:transparent;border:1px solid rgba(255,75,75,0.3);color:var(--red);padding:4px 12px;border-radius:3px;font-size:0.7rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s;}
+.btn-del:hover{background:rgba(255,75,75,0.1);border-color:var(--red);}
+.add-form{display:flex;gap:0.6rem;margin-bottom:1rem;flex-wrap:wrap;}
+.add-form input,.add-form select{flex:1;min-width:110px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:9px 10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.83rem;outline:none;}
+.add-form input:focus{border-color:var(--green);}
+.btn-add{background:var(--green);color:var(--black);border:none;padding:9px 18px;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;transition:all 0.2s;}
+.btn-add:hover{background:var(--white);}
+.empty{text-align:center;color:var(--text-dim);font-size:0.83rem;padding:1.5rem 0;}
+.admin-badge{font-family:'DM Mono',monospace;font-size:0.65rem;background:rgba(255,184,48,0.12);color:var(--amber);padding:2px 8px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;}
+.alert-ok{background:var(--green-glow);border:1px solid var(--green-dim);color:var(--green);padding:10px 14px;border-radius:4px;font-size:0.83rem;margin-top:0.5rem;}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.6rem;margin-bottom:1.2rem;}
+.chk-opt{display:flex;align-items:center;gap:0.65rem;cursor:pointer;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:6px;background:var(--surface2);transition:all 0.2s;user-select:none;}
+.chk-opt:hover{border-color:var(--green);background:rgba(46,204,90,0.05);}
+.chk-opt input[type=checkbox]{position:absolute;opacity:0;width:0;height:0;}
+.chk-box{width:20px;height:20px;border:2px solid var(--text-dim);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:var(--surface);}
+.chk-opt input:checked ~ .chk-box{background:var(--green);border-color:var(--green);}
+.chk-opt input:checked ~ .chk-box::after{content:'✓';font-size:0.75rem;color:var(--black);font-weight:900;}
+.chk-opt input:checked ~ .chk-label{color:var(--white);}
+.chk-label{font-size:0.88rem;color:var(--text);transition:color 0.2s;display:flex;flex-direction:column;font-weight:500;}
+.chk-sub{font-size:0.7rem;color:var(--text-muted);margin-top:2px;font-weight:400;}
+.chk-opt:has(input:checked) .chk-sub{color:var(--green-dim);}
+.chk-opt:has(input:checked){border-color:var(--green);background:var(--green-glow);}
+
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--surface);}
 .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--green);letter-spacing:0.08em;}
@@ -178,8 +211,10 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
 @media(max-width:600px){
   .session-opts{grid-template-columns:1fr;}
   .form-grid{grid-template-columns:1fr;}
+  .admin-grid{grid-template-columns:1fr;}
   .card-row{grid-template-columns:1fr;}
   .nav-links a:not(.btn-nav){display:none;}
+  .step-bar{display:none;}
 }
 </style>
 </head>
@@ -200,6 +235,10 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
 
 <section id="page-home" class="active">
 <div class="page-wrap">
+
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
   <div class="hero">
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
@@ -210,7 +249,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
         <p class="hero-sub">High-intensity, 30-minute sessions in a specialized basement turf facility. Individual ($30) and Two-Player ($25/ea) options available.</p>
         <div class="hero-ctas">
           <button class="btn-primary" onclick="showPage('book')">Book Your Session</button>
-          <button class="btn-outline" onclick="showPage('lab')">See the Facility</button>
+          <button class="btn-outline" onclick="document.getElementById('facility').scrollIntoView({behavior:'smooth'})">See the Facility</button>
         </div>
         <div class="hero-stats">
           <div><span class="stat-num">40<span style="font-size:1.1rem">ft</span></span><span class="stat-label">Speed Runway</span></div>
@@ -218,6 +257,32 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
           <div><span class="stat-num">1:2</span><span class="stat-label">Max Ratio</span></div>
           <div><span class="stat-num" style="font-size:1.4rem;letter-spacing:0">Soccer</span><span class="stat-label">Only</span></div>
         </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="facility-section" id="facility">
+    <div class="section-label">The Facility</div>
+    <div class="section-title">ENGINEERED<br>FOR PERFORMANCE</div>
+    <p style="color:var(--text-muted);max-width:560px;line-height:1.8;">Our purpose-built basement AstroTurf field isn't an afterthought — every square foot is designed to maximize your athlete's training environment. No distractions. No wasted space.</p>
+
+    <div class="facility-cards">
+      <div class="fcard">
+        <div class="fcard-icon">🏃</div>
+        <h3>40ft Speed Runway</h3>
+        <p>A dedicated full-length corridor optimized for sprint mechanics, ladder drills, and SAQ development. Athletes learn to generate, control, and redirect speed with proper technique.</p>
+        <span class="fcard-dim">40 ft × 20 ft</span>
+      </div>
+      <div class="fcard">
+        <h3>AstroTurf Training Field</h3>
+        <p>A full indoor AstroTurf field purpose-built for ball mastery, first-touch patterns, striking sequences, and technical skill work. The turf surface replicates real match feel so skills transfer directly to game day.</p>
+        <span class="fcard-dim">Indoor AstroTurf field — 40ft × 20ft</span>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon">🛡️</div>
+        <h3>Controlled Environment</h3>
+        <p>Climate-controlled, distraction-free, and weather-proof. Your athlete trains year-round at peak focus with direct, candid coaching that open gyms can't provide.</p>
+        <span class="fcard-dim">Indoor · Year-round</span>
       </div>
     </div>
   </div>
@@ -264,7 +329,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
 
   <footer>
     <div class="footer-logo">⚽ L3 SOCCER ACADEMY</div>
-    <div class="footer-copy">© 2026 L3 Soccer Academy · Broomfield, CO</div>
+    <div class="footer-copy">© 2025 L3 Soccer Academy · Broomfield, CO</div>
   </footer>
 </div>
 </section>
@@ -274,15 +339,13 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
 <div class="booking-wrap">
   <div class="section-label" style="margin-bottom:0.4rem">Book a Session</div>
   <div class="section-title" style="font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.5rem;">RESERVE YOUR SPOT</div>
-  
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2.5rem;text-align:center;">
-    <div style="font-size:3rem;margin-bottom:1rem;">📅</div>
-    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.04em;color:var(--white);margin-bottom:0.5rem;">ONLINE SCHEDULING INTERFACE</h3>
-    <p style="color:var(--text-muted);font-size:0.95rem;max-width:480px;margin:0 auto 2rem;line-height:1.7;">
-      Ready to sync your scheduler framework panel directly with your academy dashboard system loop! Drop your live integration components right here.
-    </p>
-    <a href="https://calendly.com" target="_blank" class="btn-primary" style="text-decoration:none;display:inline-block;">Launch Scheduler Panel</a>
+  <div class="step-bar" id="step-bar">
+    <div class="step-pill current" id="sp1">1 · Session</div>
+    <div class="step-pill" id="sp2">2 · Time</div>
+    <div class="step-pill" id="sp3">3 · Athlete</div>
+    <div class="step-pill" id="sp4">4 · Payment</div>
   </div>
+  <div class="bcard" id="bcard"></div>
 </div>
 </div>
 </section>
@@ -290,7 +353,176 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
 <section id="page-coach">
 <div class="page-wrap">
 <div style="max-width:900px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.5rem,4vw,2rem);">
+
   <div style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:2.5rem;">
     <div style="flex-shrink:0;">
       <div style="width:180px;height:220px;border-radius:8px;overflow:hidden;border:2px solid var(--green-dim);box-shadow:0 0 40px rgba(46,204,90,0.15);">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAyiAAAAAFJnaHRsb25nAAAIOwAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAMogAAAABSZ2h0bG9uZwAACDsAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAABP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAABWzAAAAAQAAAGgAAACgAAABOAAAwwAAABWXABgAAf/Y/+AAEEpGSUYAAQIAAEgASAAA/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCACgAGgDASIAAhEBAxEB/90ABAAH/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAyiAAAAAFJnaHRsb25nAAAIOwAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAMogAAAABSZ2h0bG9uZwAACDsAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1M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" alt="Bryan Little FC Bayern Munich Immersive Course" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <div class="eq-info">
+          <h4>Bryan Little — DOC Immersive Program</h4>
+          <p>Direct professional insight methodology protocols captured during Director of Coaching deployment onsite at <strong>FC Bayern Munich Academy</strong> (Munich, Germany). Principles integrated globally within our structural baseline blueprints.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center;">
+        <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;">
+          <img src="data:image/jpeg;base64,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CBJdGVtOkxlbmd0aD0iMTYxNTkiCiAgICAgICAgICAgICAgSXRlbTpQYWRkaW5nPSIwIi8+CiAgICAgICAgICA8L3JkZjpsaT4KICAgICAgICA8L3JkZjpTZXE+CiAgICAgIDwvQ29udGFpbmVyOkRpcmVjdG9yeT4KICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg|A/9k=" alt="40ft Turf Runway Setup" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <div class="eq-info">
+          <h4>40ft Acceleration Runway Zone</h4>
+          <p>Dedicated straight-line sprint track surface framework engineered to baseline immediate explosive athletic push rows, linear deceleration benchmarks, reactive ladder drills, and speed shifts.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+</section>
+
+<section id="page-faq">
+<div class="page-wrap">
+<div style="max-width:760px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.5rem,4vw,2rem);">
+  <div class="section-label" style="margin-bottom:0.4rem">Got Questions?</div>
+  <div class="section-title" style="margin-bottom:2.5rem;">ACADEMY INTEL &amp; FAQ</div>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;" id="faq-container"></div>
+</div>
+</div>
+</section>
+
+<section id="page-videos">
+<div class="page-wrap">
+<div class="videos-wrap">
+  <div class="section-label" style="margin-bottom:0.4rem;text-align:center;">Action Film Vault</div>
+  <div class="section-title" style="text-align:center;margin-bottom:0.5rem;">TECHNICAL BREAKDOWN REELS</div>
+  <p style="color:var(--text-muted);text-align:center;max-width:500px;margin:0 auto 3rem;font-size:0.9rem;line-height:1.7;">High-definition video reels breaking down footwork execution, track runway patterns, and athletic speed analysis. Select a reel from the core database framework below.</p>
+  <div class="videos-grid" id="videos-container"></div>
+</div>
+</div>
+</section>
+
+<section id="page-admin">
+<div class="page-wrap">
+<div class="admin-wrap">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;padding-bottom:1rem;border-b:1px solid var(--border);flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="section-label" style="margin-bottom:0.4rem">Control Bridge</div>
+      <div class="section-title" style="font-size:2rem;margin-bottom:0;">ACADEMY STAGING DECK</div>
+    </div>
+    <div id="admin-auth-panel"></div>
+  </div>
+  <div id="admin-main-content" style="display:none;">
+    <div class="admin-grid">
+      <div class="apanel">
+        <h3>ACTIVE RESERVATIONS <span id="admin-count-bookings" class="admin-badge">0</span></h3>
+        <div id="admin-bookings-list"></div>
+      </div>
+      <div class="apanel">
+        <h3>TIME ENGINE MANAGEMENT</h3>
+        <div class="section-mini">Generate Active Slots</div>
+        <form class="add-form" onsubmit="handleCreateSlot(event)">
+          <input type="date" id="slot-date" required/>
+          <select id="slot-time" required>
+            <option value="08:00 AM">08:00 AM</option> <option value="08:30 AM">08:30 AM</option>
+            <option value="09:00 AM">09:00 AM</option> <option value="09:30 AM">09:30 AM</option>
+            <option value="10:00 AM">10:00 AM</option> <option value="10:30 AM">10:30 AM</option>
+            <option value="11:00 AM">11:00 AM</option> <option value="11:30 AM">11:30 AM</option>
+            <option value="12:00 PM">12:00 PM</option> <option value="12:30 PM">12:30 PM</option>
+            <option value="01:00 PM">01:00 PM</option> <option value="01:30 PM">01:30 PM</option>
+            <option value="02:00 PM">02:00 PM</option> <option value="02:30 PM">02:30 PM</option>
+            <option value="03:00 PM">03:00 PM</option> <option value="03:30 PM">03:30 PM</option>
+            <option value="04:00 PM">04:00 PM</option> <option value="04:30 PM">04:30 PM</option>
+            <option value="05:00 PM">05:00 PM</option> <option value="05:30 PM">05:30 PM</option>
+            <option value="06:00 PM">06:00 PM</option> <option value="06:30 PM">06:30 PM</option>
+            <option value="07:00 PM">07:00 PM</option> <option value="07:30 PM">07:30 PM</option>
+            <option value="08:00 PM">08:00 PM</option>
+          </select>
+          <button type="submit" class="btn-add">Add Slot</button>
+        </form>
+        <div id="admin-slots-list" style="margin-top:1.5rem;max-height:400px;overflow-y:auto;padding-right:4px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<script>
+// HYDRATION SYSTEMS AND NAVIGATION LOGIC FOR THE FULL SINGLE PAGE FRAMEWORK
+const PAGES = ['home', 'book', 'coach', 'lab', 'faq', 'videos', 'admin'];
+
+function showPage(pageId) {
+  PAGES.forEach(p => {
+    const section = document.getElementById('page-' + p);
+    const navLink = document.getElementById('nav-' + p);
+    if(section) section.classList.toggle('active', p === pageId);
+    if(navLink) navLink.classList.toggle('active', p === pageId);
+  });
+  window.scrollTo({top:0});
+}
+
+// RESTORE DATABASE HYDRATION OBJECTS
+const INITIAL_FAQ = [
+  {q: "Where is the training facility located?", a: "Our private performance laboratory environment is located right in Broomfield, CO. Complete structural address parameters are pushed directly via verification email streams instantly upon reservation settlement."},
+  {q: "What ages and structural performance tiers do you train?", a: "We specialize explicitly in youth player technical literacy profiles. Our 1:1 and 1:2 micro setups adapt seamlessly to challenge advanced club players seeking tighter touch vectors, as well as developing players seeking to lock in fundamental physical baseline acceleration tracks."},
+  {q: "What is the core structure of a 30-minute block session?", a: "Because our specialized indoor space completely eliminates massive pitch distractions, your athlete operates at an intensive high-density repetition profile. Warmups transition into pure physical footwork/ball mastery handling modules within 180 seconds, ensuring a minimum of 200 high-fidelity individual touches before session termination."},
+  {q: "How does the Two-Player registration tier option execute details?", a: "Two-player sessions ($25 per athlete) allow you to pair your player directly alongside an established teammate, training companion, or sibling layout. This introduces live operational spacing constraints, tactical competitive context, and immediate micro pressure dynamics to the drills."}
+];
+
+const INITIAL_VIDEOS = [
+  {title: "Ball Mastery Framework Row", desc: "Core technical footwork matrix breakdown testing continuous spatial control variations inside restricted layout quadrants.", tag: "Technical Drill"},
+  {title: "Linear Track Acceleration Mechanics", desc: "High-definition motion recording analyzing physical first-step sprint mechanics, posture shifts, and linear track acceleration runs.", tag: "SAQ Drills"}
+];
+
+// DATA DISPATCH RENDER CORES
+document.addEventListener("DOMContentLoaded", () => {
+  // Render FAQ Structure
+  const faqWrap = document.getElementById('faq-container');
+  if(faqWrap) {
+    faqWrap.innerHTML = INITIAL_FAQ.map((f, i) => `
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <button onclick="toggleFAQ(${i})" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;background:transparent;border:none;cursor:pointer;text-align:left;gap:1rem;">
+          <span style="font-weight:600;color:var(--white);font-size:0.95rem;line-height:1.5;">${f.q}</span>
+          <span id=\"faq-icon-${i}\" style="color:var(--green);font-size:1.2rem;flex-shrink:0;">+</span>
+        </button>
+        <div id="faq-body-${i}" style="display:none;padding:0 1.5rem 1.2rem;">
+          <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;">${f.a}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Render Video Placeholders
+  const videoWrap = document.getElementById('videos-container');
+  if(videoWrap) {
+    videoWrap.innerHTML = INITIAL_VIDEOS.map(v => `
+      <div class="vcard">
+        <div class="vcard-thumb">
+          <div class="vcard-ph">
+            <span style="font-size:2rem;opacity:0.4;">🎬</span>
+            <span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;">Reel Entry Linked</span>
+          </div>
+        </div>
+        <div class="vcard-body">
+          <span class="vtag">${v.tag}</span>
+          <h4 class="vtitle">${v.title}</h4>
+          <p class="vdesc">${v.desc}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+});
+
+function toggleFAQ(i) {
+  const body = document.getElementById('faq-body-' + i);
+  const icon = document.getElementById('faq-icon-' + i);
+  const open = body.style.display === 'block';
+  body.style.display = open ? 'none' : 'block';
+  icon.textContent = open ? '+' : '−';
+}
+</script>
+
+</body>
+</html>
