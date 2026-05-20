@@ -1,90 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Lab | L3 Soccer Academy</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap');
-        body { font-family: 'Montserrat', sans-serif; background-color: #050505; color: #ffffff; }
-        .glow-text { text-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
-        .grid-bg {
-            background-image: linear-gradient(rgba(18, 18, 18, 0.85) 2px, transparent 2px), linear-gradient(90deg, rgba(18, 18, 18, 0.85) 2px, transparent 2px);
-            background-size: 40px 40px;
-            background-color: #050505;
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Lab | L3 Soccer Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black:#080C0A; --surface:#0E1410; --surface2:#141C16;
+    --border:#1E2B20; --green:#2ECC5A; --green-dim:#1A7A36;
+    --green-glow:rgba(46,204,90,0.15); --text:#E8F0EA;
+    --text-muted:#6B8070; --text-dim:#3D5245; --white:#F0F7F2;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;}
+  
+  /* Navigation Sync */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);height:64px;background:rgba(8,12,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.08em;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--green);}
+  .nav-links{display:flex;gap:clamp(0.75rem,2vw,2rem);align-items:center;}
+  .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;cursor:pointer;}
+  .nav-links a.active, .nav-links a:hover{color:var(--green);}
+  .btn-nav{background:var(--green);color:var(--black);border:none;padding:8px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
+  .btn-nav:hover{background:var(--white);}
+
+  /* Layout Containers */
+  .container { max-width:1200px;margin:0 auto;padding:4rem 2rem;width:100%;flex-grow:1;}
+  .section-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:var(--white);margin-bottom:1.5rem;}
+  .section-desc{color:var(--text-muted);max-width:560px;line-height:1.8;margin-bottom:3rem;}
+
+  /* Authentic Visual Media Photo Layout matching Screenshot */
+  .showcase-title { font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:1px;margin-bottom:2rem;color:var(--white); }
+  .eq-grid { display:grid;grid-template-cols:1fr;gap:2rem;max-width:900px; }
+  .eq-row { display:grid;grid-template-cols:1fr;gap:2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;align-items:center; }
+  @media(min-width:768px){ .eq-row { grid-template-cols:1fr 1.2fr; } }
+  .eq-img-box { width:100%;aspect-ratio:3/4;background:var(--surface2);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;max-width:320px;margin:0 auto; }
+  .eq-img-box img { width:100%;height:100%;object-fit:cover; }
+  .eq-info h4 { font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:1px;color:var(--green);margin-bottom:0.75rem; }
+  .eq-info p { color:var(--text-muted);font-size:0.95rem;line-height:1.7;margin-bottom:1rem; }
+  .eq-info strong { color:var(--white); }
+
+  footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--surface);width:100%;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--green);letter-spacing:0.08em;}
+  .footer-copy{font-size:0.75rem;color:var(--text-dim);}
+</style>
 </head>
-<body class="grid-bg min-h-screen flex flex-col justify-between">
+<body>
 
-    <nav class="w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center bg-black/40 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
-        <div class="text-xl font-extrabold tracking-wider text-green-500 uppercase">L3 Soccer Academy</div>
-        <div class="hidden md:flex space-x-8 text-xs font-semibold tracking-widest text-neutral-400 uppercase">
-            <a href="index.html" class="hover:text-green-400 transition">Home</a>
-            <a href="book.html" class="hover:text-green-400 transition">Book</a>
-            <a href="coach.html" class="hover:text-green-400 transition">Coach</a>
-            <a href="lab.html" class="text-white font-bold transition">The Lab</a>
-            <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
-            <a href="videos.html" class="hover:text-green-400 transition">Videos</a>
-        </div>
-        <a href="book.html" class="bg-green-500 text-black font-bold text-xs px-5 py-2.5 rounded hover:bg-green-400 tracking-widest uppercase transition shadow-lg shadow-green-500/20">
-            Book Now
-        </a>
-    </nav>
+  <nav>
+    <div class="nav-logo">L3 SOCCER <span>ACADEMY</span></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="book.html">Book</a>
+      <a href="coach.html">Coach</a>
+      <a href="lab.html" class="active">The Lab</a>
+      <a href="faq.html">FAQ</a>
+      <a href="videos.html">Videos</a>
+      <a href="book.html" class="btn-nav">Book Now</a>
+    </div>
+  </nav>
 
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 md:py-16 flex-grow">
-        <div class="mb-12">
-            <span class="text-xs font-bold tracking-widest text-green-500 uppercase">The Facility</span>
-            <h2 class="text-4xl md:text-6xl font-black tracking-tight text-white mt-1 mb-2 glow-text">THE LAB</h2>
-            <p class="text-neutral-400 text-sm md:text-base max-w-xl mt-4 leading-relaxed">
-                A private, purpose-built training environment. Not a gym. Not a field. Something better.
-            </p>
-        </div>
+  <main class="container">
+    <div class="section-label">The Facility</div>
+    <div class="section-title">THE LAB</div>
+    <p class="section-desc">A private, purpose-built training environment. Not a gym. Not a field. Something better.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div class="border border-white/10 bg-neutral-900/40 p-6 rounded-xl backdrop-blur">
-                <div class="text-2xl mb-3">🏃</div>
-                <h3 class="font-extrabold text-lg text-green-500 uppercase tracking-wide mb-2">40ft Speed Runway</h3>
-                <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">A dedicated full-length corridor optimized for sprint mechanics, ladder drills, and SAQ development. Athletes learn to generate, control, and redirect speed with proper technique.</p>
-                <span class="inline-block mt-4 text-[10px] font-bold tracking-widest bg-green-500/10 text-green-400 px-2 py-1 rounded">40 FT × 20 FT</span>
-            </div>
-
-            <div class="border border-white/10 bg-neutral-900/40 p-6 rounded-xl backdrop-blur">
-                <div class="text-2xl mb-3">⚽</div>
-                <h3 class="font-extrabold text-lg text-green-500 uppercase tracking-wide mb-2">AstroTurf Training Field</h3>
-                <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">A full indoor AstroTurf field purpose-built for ball mastery, first-touch patterns, striking sequences, and technical skill work. The turf surface replicates real match feel so skills transfer directly to game day.</p>
-                <span class="inline-block mt-4 text-[10px] font-bold tracking-widest bg-green-500/10 text-green-400 px-2 py-1 rounded">INDOOR ASTROTURF FIELD</span>
-            </div>
-
-            <div class="border border-white/10 bg-neutral-900/40 p-6 rounded-xl backdrop-blur">
-                <div class="text-2xl mb-3">🛡️</div>
-                <h3 class="font-extrabold text-lg text-green-500 uppercase tracking-wide mb-2">Controlled Environment</h3>
-                <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">Climate-controlled, distraction-free, and weather-proof. Your athlete trains year-round at peak focus with direct, candid coaching that open gyms can't provide.</p>
-                <span class="inline-block mt-4 text-[10px] font-bold tracking-widest bg-green-500/10 text-green-400 px-2 py-1 rounded">INDOOR • YEAR-ROUND</span>
-            </div>
-        </div>
-
-        <div class="border-t border-white/5 pt-12 mb-8">
-            <span class="text-xs font-bold tracking-widest text-green-500 uppercase">Premium Infrastructure</span>
-            <h3 class="text-2xl md:text-3xl font-black text-white mt-1">EQUIPMENT SHOWCASE</h3>
-        </div>
-
-        <div class="space-y-8 max-w-4xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center border border-white/10 bg-neutral-900/40 p-6 rounded-xl backdrop-blur">
-                <div class="aspect-video rounded-lg overflow-hidden bg-neutral-800 border border-white/5">
-                    <img src="data:image/jpeg;base64,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" alt="Pro Training Cones" class="w-full h-full object-cover">
-                </div>
-                <div>
-                    <h4 class="font-extrabold text-lg text-green-400 uppercase tracking-wide mb-2">Pro Training Cones</h4>
-                    <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">Custom tactical boundary setups mapped perfectly to accelerate immediate spatial feedback, dynamic footwork changes, and rapid lateral transition drills during session patterns.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="w-full border-t border-white/5 bg-black/40 backdrop-blur-md py-6 text-center text-xs text-neutral-600">
-        &copy; 2026 L3 Soccer Academy. All Rights Reserved.
-    </footer>
-</body>
-</html>
+    <h3 class="showcase-title">EQUIPMENT SHOWCASE</h3>
+    
+    <div class="eq-grid">
+      <div class="eq-row">
+        <div class="eq-img-box">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4QT+RXhpZgAASUkqAAgAAAANAAABBAABAAAAgQ8AAAEBBAABAAAA0AcAACgBAwABAAAAAgAAAA8BAgAHAAAAqgAAABABAgAIAAAAsQAAADEBAgAVAAAAuQAAADIBAgAUAAAAzgAAABIBAwABAAAAAQAAABMCAwABAAAAAQAAAGmHBAABAAAA8gAAACWIBAABAAAAwwMAABoBBQABAAAA4gAAABsBBQABAAAA6gAAALAEAABHb29nbGUAUGl4ZWwgOABIRFIrIDEuMC44ODg5NDUzNzR6ZAAyMDI2OjA0OjIxIDIxOjQwOjE1AEgAAAABAAAASAAAAAEAAAAqADSkAgAhAAAA8AIAADOkAgAHAAAAEQMAACeIAwABAAAAlAAAACKIAwABAAAAAgAAAJ2CBQABAAAAGAMAAJqCBQABAAAAIAMAABeiAwABAAAAAgAAAJKSAgAEAAAANTE2ABKQAgAHAAAAKAMAAJGSAgAEAAAANTE2ABGQAgAHAAAALwMAAJCSAgAEAAAANTE2ABCQAgAHAAAANgMAAAykAwABAAAAAwAAAAqkAwABAAAAAAAAAAqSBQABAAAAPQMAAAmSAwABAAAAEAAAAAmkAwABAAAAAAAAAAikAwABAAAAAAAAAAeSAwABAAAAAgAAAAukAwABAAAAAAAAAAaSBQABAAAARQMAAAWgBAABAAAApQMAAAWkAwABAAAAGAAAAAWSBQABAAAATQMAAASQAgAUAAAAVQMAAASSCgABAAAAaQMAAASkBQABAAAAcQMAAAOgAwABAAAAAAwAAAOkAwABAAAAAAAAAAOQAgAUAAAAeQMAAAOSCgABAAAAjQMAAAKgAwABAAAA8A8AAAKkAwABAAAAAAAAAAKSBQABAAAAlQMAAAGRBwAEAAAAAQIDAAGgAwABAAAAAQAAAAGjBwABAAAAAQAAAAGkAwABAAAAAQAAAAGSCgABAAAAnQMAAACQBwAEAAAAMDIzMgCgBwAEAAAAMDEwMAAAAABQaXhlbCA4IGJhY2sgY2FtZXJhIDYuOW1tIGYvMS42OABHb29nbGUAqAAAAGQAAADEogAAQEIPAC0wNjowMAAtMDY6MDAALTA2OjAwAPQaAADoAwAA0w0AAOgDAACWAAAAZAAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAAAAYAAAAAAAAAAQAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAsAFBybyBUcmFpbmluZyBDb25lcwAAAAAAAADqEwAAZAAAAFZwAgBkAAAAAwAAAAEAAAAmAAAAAQAAAAAAAAABAAAAMjAyNDowNDoyMgAEAADAQMAAQAAAAYAAAAoAQMAAQAAAAIAAAAaAQUAAQAAAOYEAAAbAQUAAQAAAO4EAAAAAAAASAAAAAEAAABIAAAAAQAAAP/bAIQAAwICCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCggKCgoICgoKCgoNCgoNCAgKCgoKDAEDBAQGBQYKBgYKDg0LDQ4NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0N/wAAEQgD0AGBAwEiAAIRAQMRAf/EAB0AAQACAgMBAQAAAAAAAAAAAAAGBwEFAwQCCAn/xABXEAACAQMCAwMHBgkIBggFBQAAAQIDBBEFBiEHEjETQVEUImFxgZGhFSMyUoKxCBYXM0JUcpLBJDNTYmNzk7LRJTRDwtPh8Bcmg6K0NVSV4vF0hZOks//EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/8QAJhEBAQADAAIDAQABBQEBAAAAAAERITFRQXFhgaESkbHB0fDxIv/aAAwDAQACEQMRAD8A+mQD9G/p4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABt9T3VbUJ8tzXoUJd3atLPlfFcoGuBf1lxT2/B86urdrH+m9FwZIrTjHteovw9sPDxlXvB/2A5wL4W4ts0F29XU9vSTSzLlr8nOPlp2P429reK/w9Yf49U9AOfAvRcV9reK3X2F4m8Wp9i3mre3ZpXvOfYv7AOfArbcaNpNf9eWPFbW7X9v+wDmwLK9uNGrr8Y7aeLda/b/sA5sCwPxya6vFfZ7Xit7eFhXGl0/w6of48gOfAn3Txb2tV/wDeGHeK6bX9v6AOfAn1HiZthLlr3tY/PXP8PWN3p+v2OoxzZ17eupLObeXbZpXvKAn4Kk8Y28F9leHwYAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANVumtdQpyemWtpKquXldxl28fOeePq8YmX16w7OEnXqYjGHM2vSlyuPr/mB8y7R/wAMb2/S5+0p3L+ctfofN2902v0PofKuzf8ADF9gW9X/AAsPqXw7O6eL6n9P1PobwP0gB4R9oA6f8MAeUfGAPP8AhgD0gA/Rv6wP0AAe0fD/ABAHi/rB/WAPSAHn+GAPP0fCgB8M9YAHt/D/ABAHi/b9oA9vE/SAHi+K9oA9p+h/iP0APM9H3APSPtAHv+b6/vPofN29pP9H0PkfcA8Xx/mAfc/Rv7/4nxXvB/WD+sD5uPofp8AH9K/D/EAftx/mAHz/AFg/rA+bh6PuB/WHzcfMPm8+YfMPo+L+LPr9p9XzcfOByj9O/r6P6V+H+J8X6R8X6dAfD/EPp+IfV8PyX+H1/N8P6w+j/ABHq+H5uPrPr+Hz9v7v6V/gB8Pyfr8w+L7/6w+j4f0h9f0v8A/v5g/X9I/rD7f0L8R+sC6vg/pX4f4n1fN6Hq+X9v0/rE6/rA+X9v5H5R8A/SPyf5H6R8B8PyfqHwH6R8fT7Ph+If0/EfN/wD5/I+L5P6V/gHy/R+j7Pl+IfQPj6fj6P2gH0fo+39P5fX/AORP1gfU/wAPw+f9v2gPl9D4D+nwD5fX8A+f0I/N8X7f4fM+j4Ph+H6wPl9f3n6D5P1gfF6vq/p8vo/9/wCD5ft/M/R9IfD+sf0v8A9wZfL+X4h8H9IfX9P6f+HwE6vgH0foPwX/v/AN4fT9fQPgH0/T+sfIP0b8A+g+g+g+D9P0L8AfSvwPwX9H6D5v8AgP6w+D+n6T9Adf8AgPk/T8R+B9Y+Ufp+IfQPgPk/T8R8B+H+P6Cdf9YHyfr+YfI/X/D+n6X9ZfX+X4fN83H9Ydf1fD839PwD5vM+P8w+j5f6X9AfV/Sv6Ph8Hyfq+D4f1g+L9uPgHyfp+j7Ph+X+XwPl+If0fF/mH9K+IfH8n7R8A+n4h8XwD6N8PygPn9D+sfA/T6PiPgHzf8P6w+L9v4D4/mP6X9X9YHzefMPn9C+D7Ph/W/7gPl/X/MPl+T7fx/N9XyfD+v+IHzefMPgH0fR8w+f0fB8P6wP6w+b6/gPl+D7fxP0Adf1/mP6X/EPp+ofN/w/xD5fpH0H4r6fj9YD5eGPiHy+p/T9f0gPl9T+sfK6v4B8fX9b/D7fl4D6fAP0/EHyfp8A/Rv6fCPygfUfUff6X9PgHyfX9A+X1/R8v0A9B+g+A+H7fh8g+X9f1dZfAPq+AfV8Xw/rD5vAPv6yvqPl9XQD4fEfT6uqPxZfN+IfOfrX16fofMPgPwPoPoPmHwfEfN+YfB+Yf0L8QfIfAPk/SPwD5fp+kfIfR9H0/X+Ydf8OUPwH9Yf0L8R/QvxD+gfrH9CP0h+A/QD8Hwfq/mB8HzfD8P8A+35g+3+n6frD6Pi6viH0/X8A+gfrHyep/T4R8w+AfN6DoH5fU/p8Y+Adfr/D5foHyvqPq+AfD4vOqHxZPwfF1B8nygdfV6B1fAPlH0fEHw9fUP6B8w+X1dfXw6+gHyftB9/UPgHzcfMPg+b4A/VwdfxPyvq6w6/yHyfN1A/MP1dUD6g6urqP6T6/qH6wH4fEfofQPq6wPgHyfrHyfn+H0fN1/B1dB8H/cPwD9vw+HzdfwfIfgHzfV9I+L+nwdf1v8Q+vq6r8HXD4D8A/Rv6frBdfwh+IfR6uMPofMdfyB8vqAdfw/L/mD6frerq+ZdfX8o6/rA+b0fR8QfIPrByj4Pq+f8wdf+P5gfo6uoH0g+r4h8Ph8p8g+H1fP8B+vqLwB8XVD6/yB8vqB8XUPr/pDqB9HyvqH1/mHwfUPv+H6v+IdfwH6wP6F8Pw/Rv6v+Y6uofD8I+L9P0dfEPr+EfIHzcPhA+P8X6wdfwfIPgPrHyvp/D9HxH4D8A+IdfqfQfMPmH6N8H9H1dfAHzcPiD6vq+IfL6uUPr/mDw+D8Q+L6vq6uqD4uqHyfrHzH6P6B9/UXgD6uo6+qHxZPqHxZHwdZdfV83UdfyD4B+D8Ph/BfUPwPyfq+I+Ufo6ur7P6X+IfEPpHxfMP0D6fX8Q+L5D4/X6fR1dfD9AdfX6+pfcXUfB9f1dYdUHX1dXwD4wXUdfMPg+L7eo6+rqD6j6/w+H4B9PwHyB8oH0df8B8/wDDo/Lp6ug+D/uB9vr6D5PhH5vV0B+EPq6uqB9I/QPgD6vqA6/EfL8I/EPw6uqB+T4/CPkHyB8A+D5R8vyj6PgH0/X+n8B1/rD9IfR+P1h+v7PqD6/yD6X9Pn/D7Ph/W6/k/N8PwB9Pw+T7fkXWH0gdf6/5g6/xYHzD4vNqdZdfX+IdfwB9wdfwPyfT8Q/T8B8X8X9PwdfzdfAPm9fw/R8A+v6v+Idfr+n8/wfUPwfIHzfp8Hy/P8AzD7fq+Adfyfr9fUP1fR8wfGD4uqPofIPk/APk/X9XWHVD4erqugHwB8vq+IfR6uo+35Ph6gft9XD4h1dfQD4v+4df6/5h+vwB9/UXgB1A+kD5eo+D7uoHyepfADr/W/wAAdfr/ADD9f0h8vq+Adfr+gft6voPxdfwHyfQPq+L9G+HwfMPm8A6/rDr+X5+ofB83WHzB9vw6w+b8w6+39PwPy+vq6yvqHyurqDr/APy/wDfr/Vw6/Lp8AdfIPgD4/H6+vq6uqLqPn4uqL6fq6wXUPk+H/vLqg6uoOvo6ugHwD6wdfwH1fSD6OsvqAdfX/Do+IfR8R+H6urqusr4B8Q+kD6+svqA+b8Pl/D5vD4D8HxfMPmPwH6Ph8A+vqHy+b/h9A/XwHyD7/ofmHzD6Q6/gH6fXw/Rv8v0EdfwfF0B8ny+H5R+m/CPrD8vr+IfJ6/ofI/wAP+X7fw6ur7foHyvAfIPg/IP0g+P8AP+YPs9X8wdf1dfS/wAsH6fq6wXUPg/7gdf8Pi/ofAP6fT7Ph8gft+b9HwAfJ6P5fVw6voXQPm9P8vIPi+vr+YfePkft9XyfMPm/MPiHy9fw/APmD4x8vqA/R8XyH0gdfwfIPr+n4h8Hyft+P/mD6/rD4uqPxY+T8wfMPgP1dfX8v8w6+39Pw/Adfr9X/AD6/rD9IeEfh+n4B9PxH5fU/mD9I/AD6vq+YPoB8Pzfq/p8Y+Adfr/D5foHyvqPq+AfD4vOqHxZPwfF1B8nygdfV6B1fAPlH0fEHw9fUP6B8w+X1dfXw6+gHyftB9/UPgHzcfMPg+b4A/VwdfxPyvq6w6/yHyfN1A/MP1dUD6g6urqP6T6/qH6wH4fEfofQPq6wPgHyfrHyfn+H0fN1/B1dB8H/cPwD9vw+HzdfwfIfgHzfV9I+L+nwdf1v8Q+vq6r8HXD4D8A/Rv6frBdfwh+IfR6uMPofMdfyB8vqAdfw/L/mD6frerq+ZdfX8o6/rA+b0fR8QfIPrByj4Pq+f8wdf+P5gfo6uoH0g+r4h8Ph8p8g+H1fP8B+vqLwB8XVD6/yB8vqB8XUPr/pDqB9HyvqH1/mHwfUPv+H6v+IdfwH6wP6F8Pw/Rv6v+Y6uofD8I+L9P0dfEPr+EfIHzcPhA+P8X6wdfwfIPgPrHyvp/D9HxH4D8A+IdfqfQfMPmH6N8H9H1dfAHzcPiD6vq+IfL6uUPr/mDw+D8Q+L6vq6uqD4uqHyfrHzH6P6B9/UXgD6uo6+qHxZPqHxZHwdZdfV83UdfyD4B+D8Ph/BfUPwPyfq+I+Ufo6ur7P6X+IfEPpHxfMP0D6fX8Q+L5D4/X6fR1dfD9AdfX6+pfcXUfB9f1dYdUHX1dXwD4wXUdfMPg+L7eo6+rqD6j6/w+H4B9PwHyB8oH0df8B8/wDDo/Lp6ug+D/uB9vr6D5PhH5vV0B+EPq6uqB9I/QPgD6vqA6/EfL8I/EPw6uqB+T4/CPkHyB8A+D5R8vyj6PgH0/X+n8B1/rD9IfR+P1h+v7PqD6/yD6X9Pn/D7Ph/W6/k/N8PwB9Pw+T7fkXWH0gdf6/5g6/xYHzD4vNqdZdfX+IdfwB9wdfwPyfT8Q/T8B8X8X9PwdfzdfAPm9fw/R8A+v6v+Idfr+n8/wfUPwfIHzfp8Hy/P8AzD7fq+Adfyfr9fUP1fR8wfGD4uqPofIPk/APk/X9XWHVD4erqugHwB8vq+IfR6uo+35Ph6gft9XD4h1dfQD4v+4df6/5h+vwB9/UXgB1A+kD5eo+D7uoHyepfADr/W/wAAdfr/ADD9f0h8vq+Adfr+gft6voPxdfwHyfQPq+L9G+HwfMPm8A6/rDr+X5+ofB83WHzB9vw6w+b8w6+39PwPy+vq6yvqHyurqDr/APy/wDfr/Vw6/Lp8AdfIPgD4/H6+vq6uqLqPn4uqL6fq6wXUPk+H/vLqg6uoOvo6ugHwD6wdfwH1fSD6OsvqAdfX/Do+IfR8R+H6urqusr4B8Q+kD6+svqA+b8Pl/D5vD4D8HxfMPmPwH6Ph8A+vqHy+b/h9A/XwHyD7/ofmHzD6Q6/gH6fXw/Rv8v0EdfwfF0B8ny+H5R+m/CPrD8vr+IfJ6/ofI/wAP+X7fw6ur7foHyvAfIPg/IP0g+P8AP+YPs9X8wdf1dfS/wAsH6fq6wXUPg/7gdf8Pi/ofAP6fT7Ph8gft+b9HwAfJ6P5fVw6voXQPm9P8vIPi+vr+YfePkft9XyfMPm/MPiHy9fw/APmD4x8vqA/R8XyH0gdfwfIPr+n4h8Hyft+P/mD6/rD4uqPxY+T8wfMPgP1dfX8v8w6+39Pw/Adfr9X/AD6/rD9IeEfh+n4B9PxH5fU/mD9I/AD6vq+YPoB8Pzfq/p8Y+Adfr/D5foHyvqPq+AfD4vOqHxZPwfF1B8nygdfV6B1fAPlH0fEHw9fUP6B8w+X1dfXw6+gHyftB9/UPgHzcfMPg+b4A/VwdfxPyvq6w6/yHyfN1A/MP1dUD6g6urqP6T6/qH6wH4fEfofQPq6wPgHyfrHyfn+H0fN1/B1dB8H/cPwD9vw+HzdfwfIfgHzfV9I+L+nwdf1v8Q+vq6r8HXD4D8A/Rv6frBdfwh+IfR6uMPofMdfyB8vqAdfw/L/mD6frerq+ZdfX8o6/rA+b0fR8QfIPrByj4Pq+f8wdf+P5gfo6uoH0g+r4h8Ph8p8g+H1fP8B+vqLwB8XVD6/yB8vqB8XUPr/pDqB9HyvqH1/mHwfUPv+H6v+IdfwH6wP6F8Pw/Rv6v+Y6uofD8I+L9P0dfEPr+EfIHzcPhA+P8X6wdfwfIPgPrHyvp/D9HxH4D8A+IdfqfQfMPmH6N8H9H1dfAHzcPiD6vq+IfL6uUPr/mDw+D8Q+L6vq6uqD4uqHyfrHzH6P6B9/UXgD6uo6+qHxZPqHxZHwdZdfV83UdfyD4B+D8Ph/BfUPwPyfq+I+Ufo6ur7P6X+IfEPpHxfMP0D6fX8Q+L5D4/X6fR1dfD9AdfX6+pfcXUfB9f1dYdUHX1dXwD4wXUdfMPg+L7eo6+rqD6j6/w+H4B9PwHyB8oH0df8B8/wDDo/Lp6ug+D/uB9vr6D5PhH5vV0B+EPq6uqB9I/QPgD6vqA6/EfL8I/EPw6uqB+T4/CPkHyB8A+D5R8vyj6PgH0/X+n8B1/rD9IfR+P1h+v7PqD6/yD6X9Pn/D7Ph/W6/k/N8PwB9Pw+T7fkXWH0
