@@ -8,6 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap');
         body { font-family: 'Montserrat', sans-serif; background-color: #050505; color: #ffffff; }
+        .glow-text { text-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
         .grid-bg {
             background-image: linear-gradient(rgba(18, 18, 18, 0.85) 2px, transparent 2px), linear-gradient(90deg, rgba(18, 18, 18, 0.85) 2px, transparent 2px);
             background-size: 40px 40px;
@@ -16,6 +17,7 @@
     </style>
 </head>
 <body class="grid-bg min-h-screen flex flex-col justify-between">
+
     <nav class="w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center bg-black/40 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
         <div class="text-xl font-extrabold tracking-wider text-green-500 uppercase">L3 Soccer Academy</div>
         <div class="hidden md:flex space-x-8 text-xs font-semibold tracking-widest text-neutral-400 uppercase">
@@ -26,33 +28,67 @@
             <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
             <a href="videos.html" class="hover:text-green-400 transition">Videos</a>
         </div>
-        <a href="book.html" class="bg-green-500 text-black font-bold text-xs px-5 py-2.5 rounded hover:bg-green-400 tracking-widest uppercase transition shadow-lg shadow-green-500/20">Book Now</a>
+        <a href="book.html" class="bg-green-500 text-black font-bold text-xs px-5 py-2.5 rounded hover:bg-green-400 tracking-widest uppercase transition shadow-lg shadow-green-500/20">
+            Book Now
+        </a>
     </nav>
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 flex-grow">
+
+    <main class="w-full max-w-7xl mx-auto px-6 py-12 md:py-16 flex-grow">
         <div class="mb-12">
-            <span class="text-xs font-bold tracking-widest text-green-500 uppercase">The Elite Training Grounds</span>
-            <h2 class="text-4xl md:text-5xl font-black text-white mt-1">THE HQ BASEMENT LAB</h2>
+            <span class="text-xs font-bold tracking-widest text-green-500 uppercase">The Facility</span>
+            <h2 class="text-4xl md:text-6xl font-black tracking-tight text-white mt-1 mb-2 glow-text">THE SOCCER LAB</h2>
+            <h3 class="text-xl font-extrabold text-neutral-400 uppercase tracking-wide">Hyper-Focused Micro Environment</h3>
+            <p class="text-neutral-400 text-sm md:text-base max-w-2xl mt-4 leading-relaxed font-medium">
+                Welcome to our specialized basement turf facility located in Broomfield, CO. By stripping away stadium distractions, athletes drill in an environment engineered entirely for maximum touches, technical mastery, and rapid physical coordination.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="border border-white/10 bg-neutral-900/40 backdrop-blur rounded-xl p-6 border-l-4 border-l-green-500">
+                <h4 class="text-lg font-bold text-white uppercase tracking-wider mb-2">40FT Speed Runway</h4>
+                <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">
+                    A premium indoor turf zone optimized for explosive change-of-direction, first-step acceleration, and high-intensity agility progressions.
+                </p>
+            </div>
+
+            <div class="border border-white/10 bg-neutral-900/40 backdrop-blur rounded-xl p-6 border-l-4 border-l-green-500">
+                <h4 class="text-lg font-bold text-white uppercase tracking-wider mb-2">Intentional Repetitions</h4>
+                <p class="text-neutral-400 text-xs md:text-sm leading-relaxed">
+                    Designed strictly for individual and 1:2 micro-group settings. Every square foot of turf ensures the athlete is constantly engaged, executing targeted footwork variations continuously.
+                </p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h4 class="text-xs font-bold tracking-widest text-neutral-500 uppercase mb-4">Laboratory Media Gallery</h4>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="border border-white/10 bg-neutral-900/40 p-3 rounded-xl backdrop-blur">
-                <div class="aspect-video rounded-lg overflow-hidden bg-neutral-800 border border-white/5">
-                    <img src="https://images.unsplash.com/photo-1577223625856-74558e238b3a?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+            
+            <div class="border border-white/5 bg-neutral-900/20 rounded-xl p-3 backdrop-blur">
+                <div class="aspect-video rounded-lg overflow-hidden bg-neutral-800 border border-white/10 flex items-center justify-center text-neutral-600">
+                    <span class="text-xs font-bold uppercase tracking-wider">Facility View [Photo Link]</span>
                 </div>
-                <div class="mt-3 font-bold text-sm tracking-wide text-white">40FT Premium Turf Runway</div>
+                <div class="mt-3 text-xs font-bold tracking-wide text-neutral-400 px-1 uppercase">Main Turf Arena</div>
             </div>
-            <div class="border border-white/10 bg-neutral-900/40 p-3 rounded-xl backdrop-blur">
-                <div class="aspect-video rounded-lg overflow-hidden bg-neutral-800 border border-white/5">
-                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+
+            <div class="border border-white/5 bg-neutral-900/20 rounded-xl p-3 backdrop-blur">
+                <div class="aspect-video rounded-lg overflow-hidden bg-neutral-800 border border-white/10 flex items-center justify-center text-neutral-600">
+                    <span class="text-xs font-bold uppercase tracking-wider">Agility Setups [Photo Link]</span>
                 </div>
-                <div class="mt-3 font-bold text-sm tracking-wide text-white">High-Speed Reactive Gear</div>
+                <div class="mt-3 text-xs font-bold tracking-wide text-neutral-400 px-1 uppercase">Performance Drill Zone</div>
             </div>
-            <div class="border border-dashed border-green-500/20 bg-green-500/5 p-6 rounded-xl flex flex-col justify-center items-center text-center">
-                <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-400 font-bold text-lg mb-3">🎬</div>
-                <h4 class="font-extrabold text-sm text-white uppercase tracking-wider">Walkthrough Video</h4>
-                <p class="text-[11px] text-neutral-500 mt-1">Coming soon! Action drill videos will be linked right here.</p>
+
+            <div class="border-2 border-dashed border-green-500/20 bg-green-500/5 p-6 rounded-xl flex flex-col justify-center items-center text-center">
+                <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center text-green-400 text-lg mb-3">🎬</div>
+                <h4 class="font-bold text-sm text-white uppercase tracking-wide">Video Training Reels</h4>
+                <p class="text-[11px] text-neutral-500 mt-1 max-w-[220px]">Placeholder active! High-definition video clips of live technical action will be injected right here.</p>
             </div>
+
         </div>
     </main>
-    <footer class="w-full border-t border-white/5 bg-black/40 backdrop-blur-md py-6 text-center text-xs text-neutral-600">&copy; 2026 L3 Soccer Academy.</footer>
+
+    <footer class="w-full border-t border-white/5 bg-black/40 backdrop-blur-md py-6 text-center text-xs text-neutral-600">
+        &copy; 2026 L3 Soccer Academy. All Rights Reserved.
+    </footer>
 </body>
 </html>
