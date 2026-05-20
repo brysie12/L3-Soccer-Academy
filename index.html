@@ -1,84 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L3 Soccer Academy | Premium Youth Athletic Performance</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap');
-        body { font-family: 'Montserrat', sans-serif; background-color: #050505; color: #ffffff; }
-        .glow-text { text-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
-        .grid-bg {
-            background-image: linear-gradient(rgba(18, 18, 18, 0.85) 2px, transparent 2px), linear-gradient(90deg, rgba(18, 18, 18, 0.85) 2px, transparent 2px);
-            background-size: 40px 40px;
-            background-color: #050505;
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>L3 Soccer Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --black:#080C0A; --surface:#0E1410; --surface2:#141C16;
+  --border:#1E2B20; --green:#2ECC5A; --green-dim:#1A7A36;
+  --green-glow:rgba(46,204,90,0.15); --text:#E8F0EA;
+  --text-muted:#6B8070; --text-dim:#3D5245;
+  --red:#FF4B4B; --amber:#FFB830; --white:#F0F7F2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--surface);} ::-webkit-scrollbar-thumb{background:var(--green-dim);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);height:64px;background:rgba(8,12,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.08em;color:var(--green);text-decoration:none;cursor:pointer;}
+.nav-logo span{color:var(--text);}
+.nav-links{display:flex;gap:clamp(0.75rem,2vw,2rem);align-items:center;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:var(--green);}
+.btn-nav{background:var(--green);color:var(--black);border:none;padding:8px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.btn-nav:hover{background:var(--white);}
+
+/* PAGES */
+section{display:none;} section.active{display:block;}
+.page-wrap{padding-top:64px;min-height:100vh;}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(2rem,6vw,5rem) clamp(1.5rem,6vw,5rem);overflow:hidden;}
+.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(46,204,90,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(46,204,90,0.04) 1px,transparent 1px);background-size:48px 48px;}
+.hero-glow{position:absolute;bottom:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(46,204,90,0.12) 0%,transparent 70%);z-index:0;pointer-events:none;}
+.hero-tag{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--green);letter-spacing:0.15em;text-transform:uppercase;border:1px solid var(--green-dim);padding:4px 12px;border-radius:2px;margin-bottom:1.5rem;animation:fadeUp 0.5s ease both;}
+.hero h1{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,8rem);line-height:0.92;letter-spacing:0.02em;color:var(--white);animation:fadeUp 0.5s 0.1s ease both;}
+.hero h1 em{color:var(--green);font-style:normal;}
+.hero-sub{position:relative;z-index:1;max-width:520px;margin-top:1.5rem;color:var(--text-muted);font-size:1.05rem;line-height:1.7;animation:fadeUp 0.5s 0.2s ease both;}
+.hero-ctas{position:relative;z-index:1;display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;animation:fadeUp 0.5s 0.3s ease both;}
+.hero-stats{position:relative;z-index:1;display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap;animation:fadeUp 0.5s 0.4s ease both;padding-top:2rem;border-top:1px solid var(--border);}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--green);line-height:1;letter-spacing:0.04em;display:block;}
+.stat-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;display:block;}
+
+/* BUTTONS */
+.btn-primary{background:var(--green);color:var(--black);border:none;padding:14px 32px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.btn-primary:hover{background:var(--white);transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,204,90,0.3);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);padding:14px 32px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--green);color:var(--green);}
+
+/* FACILITY */
+.facility-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.section-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:var(--white);margin-bottom:1.5rem;}
+.facility-photo{margin-top:2rem;border-radius:10px;overflow:hidden;border:1px solid var(--border);max-width:860px;position:relative;}
+.facility-photo img{width:100%;display:block;object-fit:cover;max-height:500px;}
+.facility-photo-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(8,12,10,0.88));padding:2rem 1.5rem 1.2rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;}
+.caption-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--white);letter-spacing:0.05em;}
+.caption-sub{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--green);letter-spacing:0.12em;text-transform:uppercase;}
+.facility-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2.5rem;}
+.fcard{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;}
+.fcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),transparent);opacity:0;transition:opacity 0.3s;}
+.fcard:hover{border-color:var(--green-dim);transform:translateY(-3px);}
+.fcard:hover::before{opacity:1;}
+.fcard-icon{font-size:1.8rem;margin-bottom:1rem;}
+.fcard h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.04em;color:var(--green);margin-bottom:0.5rem;}
+.fcard p{color:var(--text-muted);font-size:0.88rem;line-height:1.7;}
+.fcard-dim{display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--green);background:var(--green-glow);padding:3px 10px;border-radius:2px;letter-spacing:0.1em;}
+
+/* SERVICES */
+.services-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem;}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2.5rem;transition:all 0.3s;}
+.scard:hover{border-color:var(--green-dim);background:var(--surface2);}
+.scard-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:1.2rem;}
+.badge-soccer{background:rgba(46,204,90,0.15);color:var(--green);}
+.badge-multi{background:rgba(255,184,48,0.12);color:var(--amber);}
+.scard h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.8rem;}
+.scard p{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;line-height:1.7;}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.skill-list li{display:flex;align-items:flex-start;gap:0.6rem;color:var(--text);font-size:0.88rem;line-height:1.5;}
+.skill-list li::before{content:'▸';color:var(--green);font-size:0.7rem;flex-shrink:0;margin-top:3px;}
+.price-row{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;}
+.price-chip{border:1px solid var(--border);border-radius:4px;padding:10px 16px;flex:1;min-width:130px;}
+.price-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;}
+.price-val{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--green);line-height:1.1;}
+.price-sub{font-size:0.7rem;color:var(--text-dim);}
+.sports-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
+.sport-tag{font-size:0.7rem;font-family:'DM Mono',monospace;padding:3px 8px;border:1px solid var(--border);border-radius:2px;color:var(--text-muted);letter-spacing:0.05em;}
+
+/* BOOKING */
+.booking-wrap{max-width:760px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.5rem,4vw,2rem);}
+.step-bar{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:2.5rem;}
+.step-pill{flex:1;padding:12px 6px;text-align:center;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;background:var(--surface);color:var(--text-dim);border-right:1px solid var(--border);transition:all 0.2s;}
+.step-pill:last-child{border-right:none;}
+.step-pill.done{background:rgba(46,204,90,0.08);color:var(--green-dim);}
+.step-pill.current{background:var(--green);color:var(--black);font-weight:700;}
+.bcard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:clamp(1.5rem,4vw,2.5rem);}
+.bcard h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.04em;color:var(--white);margin-bottom:0.3rem;}
+.bcard .sub{color:var(--text-muted);font-size:0.88rem;margin-bottom:2rem;}
+.session-opts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.sopt{border:2px solid var(--border);border-radius:6px;padding:1.5rem;cursor:pointer;transition:all 0.2s;background:var(--surface2);text-align:center;}
+.sopt:hover{border-color:var(--green-dim);}
+.sopt.selected{border-color:var(--green);background:var(--green-glow);}
+.sopt-price{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--green);line-height:1;}
+.sopt-label{font-weight:700;font-size:1rem;color:var(--white);margin:0.4rem 0 0.25rem;}
+.sopt-desc{font-size:0.78rem;color:var(--text-muted);}
+.date-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.dtab{padding:6px 14px;border:1px solid var(--border);border-radius:4px;font-size:0.78rem;cursor:pointer;color:var(--text-muted);font-family:'DM Mono',monospace;transition:all 0.2s;background:var(--surface2);}
+.dtab:hover{border-color:var(--green-dim);color:var(--green);}
+.dtab.active{border-color:var(--green);color:var(--green);background:var(--green-glow);}
+.slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:0.75rem;}
+.slot-btn{border:1px solid var(--border);background:var(--surface2);border-radius:4px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.2s;color:var(--text);font-family:'DM Mono',monospace;font-size:0.8rem;}
+.slot-btn:hover:not([disabled]){border-color:var(--green);color:var(--green);}
+.slot-btn.selected{border-color:var(--green);background:var(--green-glow);color:var(--green);}
+.slot-btn[disabled]{opacity:0.35;cursor:not-allowed;border-style:dashed;}
+.slot-avail{font-size:0.63rem;color:var(--text-dim);margin-top:3px;}
+.slot-btn.selected .slot-avail{color:var(--green-dim);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg.full{grid-column:1 / -1;}
+.fg label{font-size:0.73rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);}
+.fg input,.fg select,.fg textarea{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:11px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;width:100%;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green);}
+.fg select option{background:var(--surface2);}
+.fg textarea{resize:vertical;min-height:80px;}
+.waiver-box{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:1.4rem;max-height:200px;overflow-y:auto;font-size:0.79rem;color:var(--text-muted);line-height:1.85;margin-top:0.5rem;}
+.waiver-box strong{color:var(--text);}
+.waiver-check-row{display:flex;align-items:flex-start;gap:0.75rem;margin-top:1rem;}
+.waiver-check-row input[type=checkbox]{width:18px;height:18px;accent-color:var(--green);flex-shrink:0;margin-top:2px;}
+.waiver-check-row label{font-size:0.85rem;color:var(--text);cursor:pointer;}
+.sig-field{width:100%;margin-top:0.75rem;padding:10px 14px;background:var(--surface2);border:1px dashed var(--green-dim);border-radius:4px;color:var(--text);font-family:'DM Sans',sans-serif;font-style:italic;font-size:0.9rem;outline:none;}
+.sig-field:focus{border-color:var(--green);border-style:solid;}
+.sig-note{font-size:0.7rem;color:var(--text-dim);margin-top:4px;}
+.pay-summary{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin-bottom:1.5rem;}
+.pay-row{display:flex;justify-content:space-between;padding:6px 0;font-size:0.9rem;color:var(--text-muted);}
+.pay-row.total{border-top:1px solid var(--border);margin-top:0.5rem;padding-top:0.75rem;color:var(--white);font-weight:700;}
+.pay-row.total span:last-child{color:var(--green);font-family:'Bebas Neue',sans-serif;font-size:1.6rem;}
+.stripe-box{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin-bottom:1.5rem;}
+.stripe-hdr{display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;font-size:0.8rem;color:var(--text-muted);}
+.card-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.75rem;}
+.bnav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;}
+.btn-back{background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:12px 24px;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;transition:all 0.2s;}
+.btn-back:hover{border-color:var(--text-muted);color:var(--text);}
+.btn-continue{background:var(--green);color:var(--black);border:none;padding:12px 32px;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;transition:all 0.2s;}
+.btn-continue:hover:not(:disabled){background:var(--white);transform:translateY(-1px);}
+.btn-continue:disabled{opacity:0.4;cursor:not-allowed;}
+.success-wrap{text-align:center;padding:3rem 1.5rem;}
+.success-wrap h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--green);margin:0.75rem 0 0.5rem;}
+.booking-ref{font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--green);background:var(--green-glow);padding:6px 16px;border-radius:2px;display:inline-block;margin:1rem 0;}
+.divider{height:1px;background:var(--border);margin:1.5rem 0;}
+.section-mini{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--green);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.75rem;}
+
+/* VIDEOS */
+.videos-wrap{max-width:960px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.5rem,4vw,2rem);}
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
+.vcard{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color 0.3s;}
+.vcard:hover{border-color:var(--green-dim);}
+.vcard-thumb{position:relative;width:100%;padding-top:56.25%;background:var(--surface2);}
+.vcard-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.vcard-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;}
+.vcard-body{padding:1.2rem 1.5rem;}
+.vtag{font-family:'DM Mono',monospace;font-size:0.65rem;padding:2px 8px;border-radius:2px;background:var(--green-glow);color:var(--green);text-transform:uppercase;letter-spacing:0.08em;}
+.vtitle{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--white);letter-spacing:0.04em;margin:0.4rem 0 0.3rem;}
+.vdesc{font-size:0.83rem;color:var(--text-muted);line-height:1.6;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--surface);}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--green);letter-spacing:0.08em;}
+.footer-copy{font-size:0.75rem;color:var(--text-dim);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:600px){
+  .session-opts{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .card-row{grid-template-columns:1fr;}
+  .nav-links a:not(.btn-nav){display:none;}
+}
+</style>
 </head>
-<body class="grid-bg min-h-screen flex flex-col justify-between">
+<body>
 
-    <nav class="w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center bg-black/40 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
-        <div class="text-xl font-extrabold tracking-wider text-green-500 uppercase">L3 Soccer Academy</div>
-        <div class="hidden md:flex space-x-8 text-xs font-semibold tracking-widest text-neutral-400 uppercase">
-            <a href="index.html" class="text-white hover:text-green-400 transition">Home</a>
-            <a href="book.html" class="hover:text-green-400 transition">Book</a>
-            <a href="coach.html" class="hover:text-green-400 transition">Coach</a>
-            <a href="lab.html" class="hover:text-green-400 transition">The Lab</a>
-            <a href="faq.html" class="hover:text-green-400 transition">FAQ</a>
-            <a href="videos.html" class="hover:text-green-400 transition">Videos</a>
+<nav>
+  <div class="nav-logo" onclick="showPage('home')" style="display:flex;align-items:center;gap:8px;"> L3 SOCCER ACADEMY</div>
+  <div class="nav-links">
+    <a id="nav-home" class="active" onclick="showPage('home')">Home</a>
+    <a id="nav-book" onclick="showPage('book')">Book</a>
+    <a id="nav-coach" onclick="showPage('coach')">Coach</a>
+    <a id="nav-lab" onclick="showPage('lab')">The Lab</a>
+    <a id="nav-faq" onclick="showPage('faq')">FAQ</a>
+    <a id="nav-videos" onclick="showPage('videos')">Videos</a>
+    <button class="btn-nav" onclick="showPage('book')">Book Now</button>
+  </div>
+</nav>
+
+<section id="page-home" class="active">
+<div class="page-wrap">
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:2rem;">
+      <div style="flex:1;min-width:280px;">
+        <div class="hero-tag">Premium Youth Athletic Performance · Broomfield, CO</div>
+        <h1>PRO TECHNICAL<br>TRAINING &amp;<br><em>ATHLETIC PERFORMANCE</em></h1>
+        <p class="hero-sub">High-intensity, 30-minute sessions in a specialized basement turf facility. Individual ($30) and Two-Player ($25/ea) options available.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="showPage('book')">Book Your Session</button>
+          <button class="btn-outline" onclick="showPage('lab')">See the Facility</button>
         </div>
-        <a href="book.html" class="bg-green-500 text-black font-bold text-xs px-5 py-2.5 rounded hover:bg-green-400 tracking-widest uppercase transition shadow-lg shadow-green-500/20">
-            Book Now
-        </a>
-    </nav>
-
-    <main class="w-full max-w-7xl mx-auto px-6 py-12 md:py-24 flex flex-col justify-center items-start flex-grow">
-        <div class="inline-flex items-center space-x-2 border border-white/10 rounded-full px-4 py-1.5 bg-neutral-900/60 backdrop-blur mb-8">
-            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span class="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">Premium Youth Athletic Performance • Broomfield, CO</span>
+        <div class="hero-stats">
+          <div><span class="stat-num">40<span style="font-size:1.1rem">ft</span></span><span class="stat-label">Speed Runway</span></div>
+          <div><span class="stat-num">30<span style="font-size:1.1rem">min</span></span><span class="stat-label">Focused Sessions</span></div>
+          <div><span class="stat-num">1:2</span><span class="stat-label">Max Ratio</span></div>
+          <div><span class="stat-num" style="font-size:1.4rem;letter-spacing:0">Soccer</span><span class="stat-label">Only</span></div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <h1 class="text-5xl md:text-8xl font-extrabold tracking-tight mb-8 leading-none max-w-4xl glow-text">
-            PRO TECHNICAL <br>
-            <span class="text-neutral-500">TRAINING &</span> <br>
-            <span class="text-green-500">ATHLETIC <br>PERFORMANCE</span>
-        </h1>
-
-        <p class="text-neutral-400 text-sm md:text-base max-w-xl mb-12 font-medium leading-relaxed">
-            High-intensity, 30-minute sessions in a specialized basement turf facility. Individual ($30) and Two-Player ($25/ea) options available.
-        </p>
-
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
-            <a href="book.html" class="bg-green-500 text-black font-extrabold text-xs px-8 py-4 rounded hover:bg-green-400 tracking-widest uppercase transition text-center shadow-xl shadow-green-500/20">
-                Book Your Session
-            </a>
-            <a href="lab.html" class="border border-white/20 text-white font-extrabold text-xs px-8 py-4 rounded hover:bg-white hover:text-black tracking-widest uppercase transition text-center bg-white/5 backdrop-blur">
-                See The Facility
-            </a>
+  <div class="services-section">
+    <div class="section-label">Services</div>
+    <div class="section-title">WHAT WE TRAIN</div>
+    <div class="services-grid">
+      <div class="scard">
+        <span class="scard-badge badge-soccer">Soccer Technical</span>
+        <h3>Ball Mastery &amp; Technical Skills</h3>
+        <p>Methodical, repetition-driven sessions targeting the technical gaps that separate good players from great ones.</p>
+        <ul class="skill-list">
+          <li>Ball Mastery — close control, pressure moves, foundational touches</li>
+          <li>First Touch — receiving under pressure, body positioning, orientation</li>
+          <li>Striking — driven shots, finesse, volley mechanics, striking zone</li>
+          <li>1v1 Skills — cuts, turns, directional dribbling</li>
+        </ul>
+        <div class="price-row">
+          <div class="price-chip"><div class="price-label">Individual</div><div class="price-val">$30</div><div class="price-sub">per 30-min session</div></div>
+          <div class="price-chip"><div class="price-label">Two-Player</div><div class="price-val">$25</div><div class="price-sub">per athlete / session</div></div>
         </div>
-    </main>
-
-    <footer class="w-full border-t border-white/5 bg-black/40 backdrop-blur-md py-8">
-        <div class="w-full max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            <div>
-                <div class="text-3xl font-extrabold text-white">40<span class="text-green-500 text-lg font-bold">FT</span></div>
-                <div class="text-[10px] font-bold tracking-widest text-neutral-500 uppercase mt-1">Speed Runway</div>
-            </div>
-            <div>
-                <div class="text-3xl font-extrabold text-white">30<span class="text-green-500 text-lg font-bold">MIN</span></div>
-                <div class="text-[10px] font-bold tracking-widest text-neutral-500 uppercase mt-1">Focused Sessions</div>
-            </div>
-            <div>
-                <div class="text-3xl font-extrabold text-white">1:2</div>
-                <div class="text-[10px] font-bold tracking-widest text-neutral-500 uppercase mt-1">Max Ratio</div>
-            </div>
-            <div>
-                <div class="text-3xl font-extrabold text-green-500 tracking-wider uppercase text-xl pt-1.5 font-black">Soccer</div>
-                <div class="text-[10px] font-bold tracking-widest text-neutral-500 uppercase mt-1">Only</div>
-            </div>
+      </div>
+      <div class="scard">
+        <span class="scard-badge badge-multi">Athletic Performance</span>
+        <h3>SAQ &amp; Physical Literacy</h3>
+        <p>Athletic development built specifically around soccer — speed, agility, and movement quality that translate directly onto the pitch.</p>
+        <ul class="skill-list">
+          <li>Speed — acceleration mechanics, max velocity, fly 10s</li>
+          <li>Agility — change of direction, reactive footwork, deceleration</li>
+          <li>Quickness — hand-eye, foot-eye, reaction time</li>
+          <li>Injury Prevention — growth-plate aware programming</li>
+        </ul>
+        <div class="sports-tags">
+          <span class="sport-tag">Soccer</span>
         </div>
-    </footer>
+        <div class="price-row">
+          <div class="price-chip"><div class="price-label">Individual</div><div class="price-val">$30</div><div class="price-sub">per 30-min session</div></div>
+          <div class="price-chip"><div class="price-label">Two-Player</div><div class="price-val">$25</div><div class="price-sub">per athlete / session</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-</body>
-</html>
+  <footer>
+    <div class="footer-logo">⚽ L3 SOCCER ACADEMY</div>
+    <div class="footer-copy">© 2026 L3 Soccer Academy · Broomfield, CO</div>
+  </footer>
+</div>
+</section>
+
+<section id="page-book">
+<div class="page-wrap">
+<div class="booking-wrap">
+  <div class="section-label" style="margin-bottom:0.4rem">Book a Session</div>
+  <div class="section-title" style="font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.5rem;">RESERVE YOUR SPOT</div>
+  
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2.5rem;text-align:center;">
+    <div style="font-size:3rem;margin-bottom:1rem;">📅</div>
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.04em;color:var(--white);margin-bottom:0.5rem;">ONLINE SCHEDULING INTERFACE</h3>
+    <p style="color:var(--text-muted);font-size:0.95rem;max-width:480px;margin:0 auto 2rem;line-height:1.7;">
+      Ready to sync your scheduler framework panel directly with your academy dashboard system loop! Drop your live integration components right here.
+    </p>
+    <a href="https://calendly.com" target="_blank" class="btn-primary" style="text-decoration:none;display:inline-block;">Launch Scheduler Panel</a>
+  </div>
+</div>
+</div>
+</section>
+
+<section id="page-coach">
+<div class="page-wrap">
+<div style="max-width:900px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.5rem,4vw,2rem);">
+  <div style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:2.5rem;">
+    <div style="flex-shrink:0;">
+      <div style="width:180px;height:220px;border-radius:8px;overflow:hidden;border:2px solid var(--green-dim);box-shadow:0 0 40px rgba(46,204,90,0.15);">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAyiAAAAAFJnaHRsb25nAAAIOwAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAMogAAAABSZ2h0bG9uZwAACDsAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAABP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAABWzAAAAAQAAAGgAAACgAAABOAAAwwAAABWXABgAAf/Y/+AAEEpGSUYAAQIAAEgASAAA/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCACgAGgDASIAAhEBAxEB/90ABAAH/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd
