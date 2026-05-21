@@ -1,168 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>L3 Soccer Academy</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>
-:root {
-  --black:#080C0A; --surface:#0E1410; --surface2:#141C16;
-  --border:#1E2B20; --green:#2ECC5A; --green-dim:#1A7A36;
-  --green-glow:rgba(46,204,90,0.15); --text:#E8F0EA;
-  --text-muted:#6B8070; --text-dim:#3D5245;
-  --red:#FF4B4B; --amber:#FFB830; --white:#F0F7F2;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
-::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--surface);} ::-webkit-scrollbar-thumb{background:var(--green-dim);border-radius:2px;}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);height:64px;background:rgba(8,12,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.08em;color:var(--green);text-decoration:none;cursor:pointer;}
-.nav-links{display:flex;gap:clamp(0.75rem,2vw,2rem);align-items:center;}
-.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;cursor:pointer;}
-.nav-links a:hover,.nav-links a.active{color:var(--green);}
-.btn-nav{background:var(--green);color:var(--black);border:none;padding:8px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
-.btn-nav:hover{background:var(--white);}
-
-/* PAGES */
-section{display:none;} section.active{display:block;}
-.page-wrap{padding-top:64px;min-height:100vh;}
-
-/* HERO */
-.hero{position:relative;min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(2rem,6vw,5rem) clamp(1.5rem,6vw,5rem);overflow:hidden;}
-.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(46,204,90,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(46,204,90,0.04) 1px,transparent 1px);background-size:48px 48px;}
-.hero-glow{position:absolute;bottom:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(46,204,90,0.12) 0%,transparent 70%);z-index:0;pointer-events:none;}
-.hero-tag{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--green);letter-spacing:0.15em;text-transform:uppercase;border:1px solid var(--green-dim);padding:4px 12px;border-radius:2px;margin-bottom:1.5rem;}
-.hero h1{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,8rem);line-height:0.92;letter-spacing:0.02em;color:var(--white);}
-.hero h1 em{color:var(--green);font-style:normal;}
-.hero-sub{position:relative;z-index:1;max-width:520px;margin-top:1.5rem;color:var(--text-muted);font-size:1.05rem;line-height:1.7;}
-.hero-ctas{position:relative;z-index:1;display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;}
-
-/* FACILITY & TRACKS */
-.services-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem;}
-.scard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2.5rem;transition:all 0.3s;}
-.scard:hover{border-color:var(--green-dim);background:var(--surface2);}
-.scard-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:1.2rem;}
-.badge-soccer{background:rgba(46,204,90,0.15);color:var(--green);}
-.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
-.skill-list li{display:flex;align-items:flex-start;gap:0.6rem;color:var(--text);font-size:0.88rem;line-height:1.5;}
-.skill-list li::before{content:'▸';color:var(--green);font-size:0.7rem;flex-shrink:0;margin-top:3px;}
-
-.eq-grid { display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px;margin-top:2rem; }
-.eq-row { display:grid;grid-template-columns:1fr;gap:2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;align-items:center; }
-@media(min-width:768px){ .eq-row { grid-template-cols:1fr 1.2fr; } }
-.eq-img-box { width:100%;aspect-ratio:3/4;background:var(--surface2);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;max-width:320px;margin:0 auto; }
-.eq-img-box img { width:100%;height:100%;object-fit:cover;display:block; }
-.eq-info h4 { font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:1px;color:var(--green);margin-bottom:0.5rem; }
-.eq-info p { color:var(--text-muted);font-size:0.95rem;line-height:1.6; }
-
-/* VIDEOS & FAQ */
-.videos-wrap{max-width:960px;margin:0 auto;padding:2rem;}
-.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
-.vcard{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;padding:1.5rem;}
-.vtitle{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:0.5rem;}
-.vdesc{font-size:0.88rem;color:var(--text-muted);line-height:1.6;}
-
-footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--surface);}
-.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--green);letter-spacing:0.08em;}
-.footer-copy{font-size:0.75rem;color:var(--text-dim);}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="nav-logo" onclick="showPage('home')">L3 SOCCER ACADEMY</div>
-  <div class="nav-links">
-    <a id="nav-home" class="active" onclick="showPage('home')">Home</a>
-    <a id="nav-coach" onclick="showPage('coach')">Coach</a>
-    <a id="nav-lab" onclick="showPage('lab')">Performance Tracks</a>
-    <a id="nav-book" onclick="showPage('book')">Book Session</a>
-    <a id="nav-faq" onclick="showPage('faq')">FAQ</a>
-    <a id="nav-videos" onclick="showPage('videos')">Videos</a>
-    <button class="btn-nav" onclick="showPage('book')">Book Now</button>
-  </div>
-</nav>
-
-<section id="page-home" class="active">
-<div class="page-wrap">
-  <div class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div style="position:relative;z-index:1;">
-      <div class="hero-tag">Premium Youth Athletic Performance · Broomfield, CO</div>
-      <h1>PRO TECHNICAL<br>TRAINING &amp;<br><em>ATHLETIC PERFORMANCE</em></h1>
-      <p class="hero-sub">High-intensity, 30-minute blocks in a specialized indoor turf lab. Select your athlete's performance focus when booking options below.</p>
-      <div class="hero-ctas">
-        <button class="btn-primary" onclick="showPage('book')">Book June Sessions</button>
-        <button class="btn-outline" onclick="showPage('lab')">View Focus Tracks</button>
-      </div>
-    </div>
-  </div>
+<div class="booking-field">
+  <label for="booking-date">Select Training Date:</label>
+  <select id="booking-date" name="date" required>
+    <option value="" disabled selected>Choose a date...</option>
+    <option value="2026-06-08">Monday, June 8th</option>
+    <option value="2026-06-09">Tuesday, June 9th</option>
+    <option value="2026-06-10">Wednesday, June 10th</option>
+    <option value="2026-06-11">Thursday, June 11th</option>
+    <option value="2026-06-12">Friday, June 12th</option>
+  </select>
 </div>
-</section>
 
-<section id="page-lab">
-<div class="page-wrap">
-  <div class="services-section">
-    <div class="section-label">coaching parameters</div>
-    <div class="section-title">ATHLETIC PERFORMANCE TRACKS</div>
-    
-    <div class="services-grid">
-      <div class="scard">
-        <div class="scard-badge badge-soccer">Track Alpha</div>
-        <h3>Technical Ball Mastery</h3>
-        <p>Developing tight-space absolute control, multi-surface ball manipulation, and micro-footwork patterns.</p>
-      </div>
-      <div class="scard">
-        <div class="scard-badge badge-soccer">Track Bravo</div>
-        <h3>Linear speed &amp; acceleration</h3>
-        <p>Pure SAQ velocity adaptations focusing directly on explosive first-step sprint drive mechanics.</p>
-      </div>
-      <div class="scard">
-        <div class="scard-badge badge-soccer">Track Charlie</div>
-        <h3>Explosive Agility &amp; Turns</h3>
-        <p>Hip orientation fluidity training designed around cutting hard angles and tight multi-directional plant steps.</p>
-      </div>
-    </div>
-
-    <div class="eq-grid" style="margin-top:4rem;">
-      <div class="section-label">Equipment Inventory</div>
-      <div class="eq-row">
-        <div class="eq-img-box">
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4QT+RXhpZgAASUkqAAgAAAANAAABBAABAAAAgQ8AAAEBBAABAAAA0AcAACgBAwABAAAAAgAAAA8BAgAHAAAAqgAAABABAgAIAAAAsQAAADEBAgAVAAAAuQAAADIBAgAUAAAAzgAAABIBAwABAAAAAQAAABMCAwABAAAAAQAAAGmHBAABAAAA8gAAACWIBAABAAAAwwMAABoBBQABAAAA4gAAABsBBQABAAAA6gAAALAEAABHb29nbGUAUGl4ZWwgOABIRFIrIDEuMC44ODg5NDUzNzR6ZAAyMDI2OjA0OjIxIDIxOjQwOjE1AEgAAAABAAAASAAAAAEAAAAqADSkAgAhAAAA8AIAADOkAgAHAAAAEQMAACeIAwABAAAAlAAAACKIAwABAAAAAgAAAJ2CBQABAAAAGAMAAJqCBQABAAAAIAMAABeiAwABAAAAAgAAAJKSAgAEAAAANTE2ABKQAgAHAAAAKAMAAJGSAgAEAAAANTE2ABGQAgAHAAAALwMAAJCSAgAEAAAANTE2ABCQAgAHAAAANgMAAAykAwABAAAAAwAAAAqkAwABAAAAAAAAAAqSBQABAAAAPQMAAAmSAwABAAAAEAAAAAmkAwABAAAAAAAAAAikAwABAAAAAAAAAAeSAwABAAAAAgAAAAukAwABAAAAAAAAAAaSBQABAAAARQMAAAWgBAABAAAApQMAAAWkAwABAAAAGAAAAAWSBQABAAAATQMAAASQAgAUAAAAVQMAAASSCgABAAAAaQMAAASkBQABAAAAcQMAAAOgAwABAAAAAAwAAAOkAwABAAAAAAAAAAOQAgAUAAAAeQMAAAOSCgABAAAAjQMAAAKgAwABAAAA8A8AAAKkAwABAAAAAAAAAAKSBQABAAAAlQMAAAGRBwAEAAAAAQIDAAGgAwABAAAAAQAAAAGjBwABAAAAAQAAAAGkAwABAAAAAQAAAAGSCgABAAAAnQMAAACQBwAEAAAAMDIzMgCgBwAEAAAAMDEwMAAAAABQaXhlbCA4IGJhY2sgY2FtZXJhIDYuOW1tIGYvMS42OABHb29nbGUAqAAAAGQAAADEogAAQEIPAC0wNjowMAAtMDY6MDAALTA2OjAwAPQaAADoAwAA0w0AAOgDAACWAAAAZAAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAAAAYAAAAAAAAAAQAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAsAFBybyBUcmFpbmluZyBDb25lcwAAAAAAAADqEwAAZAAAAFZwAgBkAAAAAwAAAAEAAAAmAAAAAQAAAAAAAAABAAAAMjAyNDowNDoyMgAEAADAQMAAQAAAAYAAAAoAQMAAQAAAAIAAAAaAQUAAQAAAOYEAAAbAQUAAQAAAO4EAAAAAAAASAAAAAEAAABIAAAAAQAAAP/iAdhJQ0NfUFJPRklMRQABAQAAAcgAAAAABDAAAG1udHJSR0IgWFlaIAfgAAEAAQAAAAAAAGFjc3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAD21gABAAAAANMtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACWRlc2MAAADwAAAAJHJYWVoAAAEUAAAAFGdYWVoAAAEoAAAAFGJYWVoAAAE8AAAAFHd0cHQAAAFQAAAAFHJUUkMAAAFkAAAAKGdUUkMAAAFkAAAAKGJUUkMAAAFkAAAAKGNwcnQAAAGMAAAAPG1sdWMAAAAAAAAAAQAAAAxlblVTAAAACAAAABwAcwBSAEcAQlhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z1hZWiAAAAAAAAD21gABAAAAANMtcGFyYQAAAAAABAAAAAJmZgAA8qcAAA1ZAAAT0AAAClsAAAAAAAAAAG1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/hDFhodHRwOi8vbnMuYWRvYmUuY29t/eHBhY2tldCBiZWdpbj0iZT77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMS4wLWpjMDAzIj4KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICB4bWxuczpDb250YWluZXI9Imh0dHA6Ly9ucy5nb29nbGUuY29t/cGhvdG9zLzEuMC9jb250YWluZXIvIiAgICAgICAgeG1sbnM6SXRlbT0iaHR0cDovL25zLmdvb2dsZS5jb20vcGhvdG9zLzEuMC9jb250YWluZXIvaXRlbS8iCiAgICAgICAgeG1sbnM6QWhkcmdtPSJodHRwOi8vbnMuYWRvYmUuY29tL2hkci1nYWluLW1hcC8xLjAvIgogICAgICBoZHJnbTpWZXJzaW9uPSIxLjAiPgogICAgICA8Q29udGFpbmVyOkRpcmVjdG9yeT4KICAgICAg" alt="Pro Training Cones">
-        </div>
-        <div class="eq-info">
-          <h4>Pro Training Cones</h4>
-          <p>Custom-spaced training indicators layout used to map immediate spatial constraints, develop micro-footwork patterns, speed turns, and enforce explosive agility drills.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="booking-field">
+  <label for="booking-time">Select Time Slot (30 Mins):</label>
+  <select id="booking-time" name="time" required>
+    <option value="" disabled selected>Choose a time...</option>
+    <option value="10:00">10:00 AM - 10:30 AM</option>
+    <option value="10:35">10:35 AM - 11:05 AM</option>
+    <option value="11:10">11:10 AM - 11:40 AM</option>
+    <option value="11:45">11:45 AM - 12:15 PM</option>
+    <option value="12:20">12:20 PM - 12:50 PM</option>
+    <option value="12:55">12:55 PM - 1:25 PM</option>
+    <option value="1:30">1:30 PM - 2:00 PM</option>
+  </select>
 </div>
-</section>
-
-<section id="page-book">
-<div class="page-wrap" style="padding: 2rem clamp(1rem, 4vw, 3rem);">
-  <div style="max-width:1000px;margin:0 auto;">
-    <div class="section-label">Live Booking Hub</div>
-    <div class="section-title">RESERVE YOUR ATHLETE'S SESSION BLOCK</div>
-    
-    <div style="width:100%; min-height:800px; background:#fff; border:1px solid var(--border); border-radius:8px; overflow:hidden; position:relative;">
-      <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0l80_xH_kZkXz7Kz06LzR3TFk4QkdDOWM4" width="100%" height="800" frameborder="0" scrolling="yes"></iframe>
-    </div>
-  </div>
-</div>
-</section>
-
-<section id="page-coach">
-<div class="page-wrap" style="max-width:900px;margin:0 auto;padding:4rem 2rem;">
-  <div class="section-label">Head Coach</div>
-  <div class="section-title">BRYAN LITTLE</div>
-  <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:center;background:var(--surface);padding:2rem;border:1px solid var(--border);border-radius:8px;">
-    <div style="width:150px;height:180px;border-radius:6px;overflow:hidden;border:2px solid var(--green);flex-shrink:0;">
-      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABud
