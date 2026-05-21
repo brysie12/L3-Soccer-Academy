@@ -19,46 +19,69 @@ html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
 ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--surface);} ::-webkit-scrollbar-thumb{background:var(--green-dim);border-radius:2px;}
 
-/* NAV STRUCTURE */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);height:64px;background:rgba(8,12,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.08em;color:var(--green);text-decoration:none;cursor:pointer;}
 .nav-links{display:flex;gap:clamp(0.75rem,2vw,2rem);align-items:center;}
 .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;cursor:pointer;}
 .nav-links a:hover,.nav-links a.active{color:var(--green);}
-.btn-nav{background:var(--green);color:var(--black);border:none;padding:8px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;}
+.btn-nav{background:var(--green);color:var(--black);border:none;padding:8px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
 .btn-nav:hover{background:var(--white);color:var(--black);}
 
-/* TAB ENGINE VISIBILITY */
-.tab-content { display: none; }
-.tab-content.active { display: block !important; }
+/* PAGES */
+section{display:none;} section.active{display:block;}
 .page-wrap{padding-top:64px;min-height:100vh;}
 
-/* HERO CONTENT */
+/* HERO */
 .hero{position:relative;min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(2rem,6vw,5rem) clamp(1.5rem,6vw,5rem);overflow:hidden;}
 .hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(46,204,90,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(46,204,90,0.04) 1px,transparent 1px);background-size:48px 48px;}
-.hero-glow{position:absolute;bottom:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(46,204,90,0.12) 0%,transparent 70%);z-index:0;}
+.hero-glow{position:absolute;bottom:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(46,204,90,0.12) 0%,transparent 70%);z-index:0;pointer-events:none;}
 .hero-tag{position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--green);letter-spacing:0.15em;text-transform:uppercase;border:1px solid var(--green-dim);padding:4px 12px;border-radius:2px;margin-bottom:1.5rem;}
 .hero h1{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,8rem);line-height:0.92;letter-spacing:0.02em;color:var(--white);}
 .hero h1 em{color:var(--green);font-style:normal;}
 .hero-sub{position:relative;z-index:1;max-width:520px;margin-top:1.5rem;color:var(--text-muted);font-size:1.05rem;line-height:1.7;}
 .hero-ctas{position:relative;z-index:1;display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;}
 .hero-stats{position:relative;z-index:1;display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--border);width:100%;}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--green);line-height:1;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--green);line-height:1;letter-spacing:0.04em;display:block;}
 .stat-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;display:block;}
 
-/* FACILITY LAYOUTS */
+/* FACILITY */
 .facility-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .section-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;}
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:var(--white);margin-bottom:1.5rem;}
 .facility-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2.5rem;}
-.fcard{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:2rem;position:relative;}
+.fcard{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;}
 .fcard h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.04em;color:var(--green);margin-bottom:0.5rem;}
 .fcard p{color:var(--text-muted);font-size:0.88rem;line-height:1.7;}
-.fcard-dim{display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--green);background:var(--green-glow);padding:3px 10px;border-radius:2px;}
+.fcard-dim{display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--green);background:var(--green-glow);padding:3px 10px;border-radius:2px;letter-spacing:0.1em;}
 
-/* THE LAB (EQUIPMENT ROWS FRAMEWORK) */
-.container { max-width:1200px;margin:0 auto;padding:4rem 2rem;width:100%;}
-.showcase-title { font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:1px;margin-bottom:2rem;color:var(--white);border-top:1px solid var(--border);padding-top:3rem; }
+/* SERVICES GRID ORIGINAL */
+.services-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem;}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2.5rem;transition:all 0.3s;}
+.scard:hover{border-color:var(--green-dim);background:var(--surface2);}
+.scard-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:1.2rem;}
+.badge-soccer{background:rgba(46,204,90,0.15);color:var(--green);}
+.badge-multi{background:rgba(255,184,48,0.12);color:var(--amber);}
+.scard h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.8rem;}
+.scard p{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;line-height:1.7;}
+.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.skill-list li{display:flex;align-items:flex-start;gap:0.6rem;color:var(--text);font-size:0.88rem;line-height:1.5;}
+.skill-list li::before{content:'▸';color:var(--green);font-size:0.7rem;flex-shrink:0;margin-top:3px;}
+.price-row{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;}
+.price-chip{border:1px solid var(--border);border-radius:4px;padding:10px 16px;flex:1;min-width:130px;}
+.price-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;}
+.price-val{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--green);line-height:1.1;}
+.price-sub{font-size:0.7rem;color:var(--text-dim);}
+
+/* CHECKBOX SKILL LIST STYLES (ORIGINAL LAB CHIPS) */
+.skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; margin-bottom: 3rem; }
+.skill-checkbox-card { display: flex; align-items: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem 1.5rem; }
+.skill-checkbox-card input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--green); cursor: pointer; opacity: 0.7; }
+.skill-text-group h4 { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.1rem; }
+.skill-text-group p { font-size: 0.8rem; color: var(--text-muted); }
+
+/* THE LAB ROW DETAILS */
 .eq-grid { display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px;margin-top:2rem; }
 .eq-row { display:grid;grid-template-columns:1fr;gap:2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;align-items:center; }
 @media(min-width:768px){ .eq-row { grid-template-columns:1fr 1.2fr; } }
@@ -67,18 +90,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .eq-info h4 { font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:1px;color:var(--green);margin-bottom:0.5rem; }
 .eq-info p { color:var(--text-muted);font-size:0.95rem;line-height:1.6; }
 
-/* SERVICES PLATES */
-.services-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem;}
-.scard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2.5rem;}
-.scard-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:1.2rem;}
-.badge-soccer{background:rgba(46,204,90,0.15);color:var(--green);}
-.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
-.skill-list li{display:flex;align-items:flex-start;gap:0.6rem;color:var(--text);font-size:0.88rem;line-height:1.5;}
-.skill-list li::before{content:'▸';color:var(--green);font-size:0.7rem;flex-shrink:0;margin-top:3px;}
-
-/* VIDEOS & FAQ STYLING */
-.videos-wrap{max-width:960px;margin:0 auto;padding:4rem 2rem;}
+/* VIDEOS & FAQ */
+.videos-wrap{max-width:960px;margin:0 auto;padding:2rem;}
 .videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
 .vcard{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;padding:1.5rem;}
 .vtitle{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:0.5rem;}
@@ -104,7 +117,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
   </div>
 </nav>
 
-<section id="page-home" class="tab-content active">
+<section id="page-home" class="active">
 <div class="page-wrap">
   <div class="hero">
     <div class="hero-grid"></div>
@@ -114,8 +127,7 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
       <h1>PRO TECHNICAL<br>TRAINING &amp;<br><em>ATHLETIC PERFORMANCE</em></h1>
       <p class="hero-sub">High-intensity, 30-minute sessions in a specialized basement turf facility. Individual ($30) and Two-Player ($25/ea) options available.</p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="showPage('book')">Book Your June Session</button>
-        <button class="btn-outline" onclick="showPage('lab')">Explore The Lab</button>
+        <button class="btn-primary" onclick="showPage('book')">Book Your Session</button>
       </div>
       <div class="hero-stats">
         <div><span class="stat-num">40<span style="font-size:1.1rem">ft</span></span><span class="stat-label">Speed Runway</span></div>
@@ -139,49 +151,68 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
 </div>
 </section>
 
-<section id="page-book" class="tab-content">
-<div class="page-wrap" style="padding: 4rem 2rem; max-width: 1100px; margin: 0 auto;">
-  <div class="section-label">Live Reservations</div>
-  <div class="section-title">CHOOSE TIMES &amp; BOOK SESSIONS</div>
-  <p style="color:var(--text-muted); margin-bottom: 2rem; max-width: 600px;">Select your training appointment from the Google schedule frame layout below. Enter your athlete's required performance focus details inside the customized booking form fields.</p>
+<section id="page-book">
+<div class="page-wrap" style="padding: 3rem 2rem; max-width: 1000px; margin: 0 auto;">
+  <div class="section-label">Scheduling Gateway</div>
+  <div class="section-title">RESERVE YOUR APPOINTMENT NODE</div>
   
-  <div style="width:100%; min-height:850px; background:#ffffff; border:1px solid var(--border); border-radius:12px; overflow:hidden;">
-    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0l80_xH_kZkXz7Kz06LzR3TFk4QkdDOWM4" width="100%" height="850" frameborder="0" scrolling="yes"></iframe>
+  <div style="width:100%; min-height:800px; background:#ffffff; border:1px solid var(--border); border-radius:8px; overflow:hidden;">
+    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0l80_xH_kZkXz7Kz06LzR3TFk4QkdDOWM4" width="100%" height="800" frameborder="0" scrolling="yes"></iframe>
   </div>
 </div>
 </section>
 
-<section id="page-coach" class="tab-content">
+<section id="page-coach">
 <div class="page-wrap" style="max-width:900px;margin:0 auto;padding:4rem 2rem;">
   <div class="section-label">Head Coach</div>
   <div class="section-title">BRYAN LITTLE</div>
   <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:center;background:var(--surface);padding:2rem;border:1px solid var(--border);border-radius:8px;margin-top:2rem;">
-    <div style="width:150px;height:185px;border-radius:6px;overflow:hidden;border:2px solid var(--green);flex-shrink:0;">
-      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAyiAAAAAFJnaHRsb25nAAAIOwAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAMogAAAABSZ2h0bG9uZwAACDsAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAABP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAABWzAAAAAQAAAGgAAACgAAABOAAAwwAAABWXABgAAf/Y/+AAEEpGSUYAAQIAAEgASAAA/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCACgAGgDASIAAhEBAxEB/10ABAAH/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd4eXp7fH/9oADAMBAใช้งานได้ดีมากค่ะ ใช้งานง่าย คล่องตัวดี ถนัดมือ ราคาสมเหตุสมผล คุ้มค่าดีมาก ส่งเร็วแพคเรียบร้อยดี แนะนำค่ะ" alt="Head Coach Bryan Little" style="width:100%;height:100%;object-fit:cover;"/>
+    <div style="width:150px;height:180px;border-radius:6px;overflow:hidden;border:2px solid var(--green);flex-shrink:0;">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAyiAAAAAFJnaHRsb25nAAAIOwAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAMogAAAABSZ2h0bG9uZwAACDsAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAABP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAABWzAAAAAQAAAGgAAACgAAABOAAAwwAAABWXABgAAf/Y/+AAEEpGSUYAAQIAAEgASAAA/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCACgAGgDASIAAhEBAxEB/10ABAAH/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd4eXp7fH/9oADAMBAใช้งานได้ดีมากค่ะ ใช้งานง่าย คล่องตัวดี ถนัดมือ ราคสมเหตุสมผล คุ้มค่าดีมาก ส่งเร็วแพคเรียบร้อยดี แนะนำค่ะ" alt="Coach Bryan Little" style="width:100%;height:100%;object-fit:cover;display:block;"/>
     </div>
-    <div style="color:var(--text-muted);flex:1;min-width:260px;line-height:1.8;">
+    <p style="color:var(--text-muted);flex:1;min-width:260px;line-height:1.8;">
       Pushed directly out of elite youth deployment loops, Coach Bryan focuses completely on high-repetition touch execution, velocity mechanics, and restricted-space footwork vectors. No filler conditioning blocks — pure performance execution feedback.
-    </div>
+    </p>
   </div>
 </div>
 </section>
 
 <section id="page-lab" class="tab-content">
-<div class="page-wrap" style="max-width:1200px;margin:0 auto;padding:4rem 2rem;">
-  <div class="section-label">Infrastructure Matrix</div>
-  <div class="section-title">THE PERFORMANCE LAB</div>
-  <p style="color:var(--text-muted);max-width:560px;line-height:1.8;">Our purpose-built basement AstroTurf field isn't an afterthought — every square foot is designed to maximize your athlete's training environment. No distractions. No wasted space.</p>
-  
-  <h3 class="showcase-title">EQUIPMENT SHOWCASE</h3>
-  
-  <div class="eq-grid">
-    <div class="eq-row">
-      <div class="eq-img-box">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4QT+RXhpZgAASUkqAAgAAAANAAABBAABAAAAgQ8AAAEBBAABAAAA0AcAACgBAwABAAAAAgAAAA8BAgAHAAAAqgAAABABAgAIAAAAsQAAADEBAgAVAAAAuQAAADIBAgAUAAAAzgAAABIBAwABAAAAAQAAABMCAwABAAAAAQAAAGmHBAABAAAA8gAAACWIBAABAAAAwwMAABoBBQABAAAA4gAAABsBBQABAAAA6gAAALAEAABHb29nbGUAUGl4ZWwgOABIRFIrIDEuMC44ODg5NDUzNzR6ZAAyMDI2OjA0OjIxIDIxOjQwOjE1AEgAAAABAAAASAAAAAEAAAAqADSkAgAhAAAA8AIAADOkAgAHAAAAEQMAACeIAwABAAAAlAAAACKIAwABAAAAAgAAAJ2CBQABAAAAGAMAAJqCBQABAAAAIAMAABeiAwABAAAAAgAAAJKSAgAEAAAANTE2ABKQAgAHAAAAKAMAAJGSAgAEAAAANTE2ABGQAgAHAAAALwMAAJCSAgAEAAAANTE2ABCQAgAHAAAANgMAAAykAwABAAAAAwAAAAqkAwABAAAAAAAAAAqSBQABAAAAPQMAAAmSAwABAAAAEAAAAAmkAwABAAAAAAAAAAikAwABAAAAAAAAAAeSAwABAAAAAgAAAAukAwABAAAAAAAAAAaSBQABAAAARQMAAAWgBAABAAAApQMAAAWkAwABAAAAGAAAAAWSBQABAAAATQMAAASQAgAUAAAAVQMAAASSCgABAAAAaQMAAASkBQABAAAAcQMAAAOgAwABAAAAAAwAAAOkAwABAAAAAAAAAAOQAgAUAAAAeQMAAAOSCgABAAAAjQMAAAKgAwABAAAA8A8AAAKkAwABAAAAAAAAAAKSBQABAAAAlQMAAAGRBwAEAAAAAQIDAAGgAwABAAAAAQAAAAGjBwABAAAAAQAAAAGkAwABAAAAAQAAAAGSCgABAAAAnQMAAACQBwAEAAAAMDIzMgCgBwAEAAAAMDEwMAAAAABQaXhlbCA4IGJhY2sgY2FtZXJhIDYuOW1tIGYvMS42OABHb29nbGUAqAAAAGQAAADEogAAQEIPAC0wNjowMAAtMDY6MDAALTA2OjAwAPQaAADoAwAA0w0AAOgDAACWAAAAZAAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAAAAYAAAAAAAAAAQAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAsAFBybyBUcmFpbmluZyBDb25lcwAAAAAAAADqEwAAZAAAAFZwAgBkAAAAAwAAAAEAAAAmAAAAAQAAAAAAAAABAAAAMjAyNDowNDoyMgAEAADAQMAAQAAAAYAAAAoAQMAAQAAAAIAAAAaAQUAAQAAAOYEAAAbAQUAAQAAAO4EAAAAAAAASAAAAAEAAABIAAAAAQAAAP/iAdhJQ0NfUFJPRklMRQABAQAAAcgAAAAABDAAAG1udHJSR0IgWFlaIAfgAAEAAQAAAAAAAGFjc3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAD21gABAAAAANMtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACWRlc2MAAADwAAAAJHJYWVoAAAEUAAAAFGdYWVoAAAEoAAAAFGJYWVoAAAE8AAAAFHd0cHQAAAFQAAAAFHJUUkMAAAFkAAAAKGdUUkMAAAFkAAAAKGJUUkMAAAFkAAAAKGNwcnQAAAGMAAAAPG1sdWMAAAAAAAAAAQAAAAxlblVTAAAACAAAABwAcwBSAEcAQlhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z1hZWiAAAAAAAAD21gABAAAAANMtcGFyYQAAAAAABAAAAAJmZgAA8qcAAA1ZAAAT0AAAClsAAAAAAAAAAG1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/hDFhodHRwOi8vbnMuYWRvYmUuY29t/eHBhY2tldCBiZWdpbj0iZT77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMS4wLWpjMDAzIj4KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICB4bWxuczpDb250YWluZXI9Imh0dHA6Ly9ucy5nb29nbGUuY29t/cGhvdG9zLzEuMC9jb250YWluZXIvIiAgICAgICAgeG1sbnM6SXRlbT0iaHR0cDovL25zLmdvb2dsZS5jb20vcGhvdG9zLzEuMC9jb250YWluZXIvaXRlbS8iCiAgICAgICAgeG1sbnM6QWhkcmdtPSJodHRwOi8vbnMuYWRvYmUuY29t/mhkci1nYWluLW1hcC8xLjAvIgogICAgICBoZHJnbTpWZXJzaW9uPSIxLjAiPgogICAgICA8Q29udGFpbmVyOkRpcmVjdG9yeT4KICAgICAg" alt="Pro Training Cones">
-      </div>
-      <div class="eq-info">
-        <h4>Pro Training Cones</h4>
-        <p>Custom-spaced training indicators layout used to map immediate spatial constraints, develop micro-footwork patterns, speed turns, and enforce explosive agility drills.</p>
+<div class="page-wrap">
+  <div class="services-section">
+    <div class="section-label">Coaching Specialties</div>
+    <div class="section-title">TECHNICAL CORE CURRICULUM</div>
+    <p style="color:var(--text-muted);max-width:600px;margin-bottom:2rem;">Specific technical skills we can work on with the ball. Select your focal parameters during active schedule registration loops:</p>
+    
+    <div class="skills-container">
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Ball Mastery</h4><p>1v1 moves &amp; body feints</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Close Control</h4><p>Tight spaces &amp; pressure</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>First Touch</h4><p>Inside &amp; outside of foot</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Aerial Control</h4><p>Receiving lofted passes</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Body Orientation</h4><p>Turn &amp; face forward</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Passing Combinations</h4><p>1-2s, wall passes, give &amp; go</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Pass Weight &amp; Accuracy</h4><p>Driven &amp; finessed passes</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Driven Strikes</h4><p>Power with laces</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Finesse Shooting</h4><p>Curl &amp; placement</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Volleys</h4><p>Full &amp; half-volley finishing</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Speed Dribble</h4><p>Running with ball in behind</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Cuts &amp; Direction Changes</h4><p>Inside, outside, V-cuts</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Weak Foot Development</h4><p>Build confidence &amp; consistency</p></div></div>
+      <div class="skill-checkbox-card"><input type="checkbox" checked onclick="return false;"><div class="skill-text-group"><h4>Turn Techniques</h4><p>Cruyff, drag-back, step-over</p></div></div>
+    </div>
+
+    <div class="section-label">Athletic Performance — All Sports</div>
+    <div class="section-title">THE PERFORMANCE LAB EQUIPMENT</div>
+    
+    <div class="eq-grid">
+      <div class="eq-row">
+        <div class="eq-img-box">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4QT+RXhpZgAASUkqAAgAAAANAAABBAABAAAAgQ8AAAEBBAABAAAA0AcAACgBAwABAAAAAgAAAA8BAgAHAAAAqgAAABABAgAIAAAAsQAAADEBAgAVAAAAuQAAADIBAgAUAAAAzgAAABIBAwABAAAAAQAAABMCAwABAAAAAQAAAGmHBAABAAAA8gAAACWIBAABAAAAwwMAABoBBQABAAAA4gAAABsBBQABAAAA6gAAALAEAABHb29nbGUAUGl4ZWwgOABIRFIrIDEuMC44ODg5NDUzNzR6ZAAyMDI2OjA0OjIzIDIxOjQwOjE1AEgAAAABAAAASAAAAAEAAAAqADSkAgAhAAAA8AIAADOkAgAHAAAAEQMAACeIAwABAAAAlAAAACKIAwABAAAAAgAAAJ2CBQABAAAAGAMAAJqCBQABAAAAIAMAABeiAwABAAAAAgAAAJKSAgAEAAAANTE2ABKQAgAHAAAAKAMAAJGSAgAEAAAANTE2ABGQAgAHAAAALwMAAJCSAgAEAAAANTE2ABCQAgAHAAAANgMAAAykAwABAAAAAwAAAAqkAwABAAAAAAAAAAqSBQABAAAAPQMAAAmSAwABAAAAEAAAAAmkAwABAAAAAAAAAAikAwABAAAAAAAAAAeSAwABAAAAAgAAAAukAwABAAAAAAAAAAaSBQABAAAARQMAAAWgBAABAAAApQMAAAWkAwABAAAAGAAAAAWSBQABAAAATQMAAASQAgAUAAAAVQMAAASSCgABAAAAaQMAAASkBQABAAAAcQMAAAOgAwABAAAAAAwAAAOkAwABAAAAAAAAAAOQAgAUAAAAeQMAAAOSCgABAAAAjQMAAAKgAwABAAAA8A8AAAKkAwABAAAAAAAAAAKSBQABAAAAlQMAAAGRBwAEAAAAAQIDAAGgAwABAAAAAQAAAAGjBwABAAAAAQAAAAGkAwABAAAAAQAAAAGSCgABAAAAnQMAAACQBwAEAAAAMDIzMgCgBwAEAAAAMDEwMAAAAABQaXhlbCA4IGJhY2sgY2FtZXJhIDYuOW1tIGYvMS42OABHb29nbGUAqAAAAGQAAADEogAAQEIPAC0wNjowMAAtMDY6MDAALTA2OjAwAPQaAADoAwAA0w0AAOgDAACWAAAAZAAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAAAAYAAAAAAAAAAQAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAsAFBybyBUcmFpbmluZyBDb25lcwAAAAAAAADqEwAAZAAAAFZwAgBkAAAAAwAAAAEAAAAmAAAAAQAAAAAAAAABAAAAMjAyNDowNDoyMgAEAADAQMAAQAAAAYAAAAoAQMAAQAAAAIAAAAaAQUAAQAAAOYEAAAbAQUAAQAAAO4EAAAAAAAASAAAAAEAAABIAAAAAQAAAP/iAdhJQ0NfUFJPRklMRQABAQAAAcgAAAAABDAAAG1udHJSR0IgWFlaIAfgAAEAAQAAAAAAAGFjc3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAD21gABAAAAANMtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACWRlc2MAAADwAAAAJHJYWVoAAAEUAAAAFGdYWVoAAAEoAAAAFGJYWVoAAAE8AAAAFHd0cHQAAAFQAAAAFHJUUkMAAAFkAAAAKGdUUkMAAAFkAAAAKGJUUkMAAAFkAAAAKGNwcnQAAAGMAAAAPG1sdWMAAAAAAAAAAQAAAAxlblVTAAAACAAAABwAcwBSAEcAQlhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z1hZWiAAAAAAAAD21gABAAAAANMtcGFyYQAAAAAABAAAAAJmZgAA8qcAAA1ZAAAT0AAAClsAAAAAAAAAAG1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/hDFhodHRwOi8vbnMuYWRvYmUuY29t/eHBhY2tldCBiZWdpbj0iZT77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMS4wLWpjMDAzIj4KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICB4bWxuczpDb250YWluZXI9Imh0dHA6Ly9ucy5nb29nbGUuY29t/cGhvdG9zLzEuMC9jb250YWluZXIvIiAgICAgICAgeG1sbnM6SXRlbT0iaHR0cDovL25zLmdvb2dsZS5jb20vcGhvdG9zLzEuMC9jb250YWluZXIvaXRlbS8iCiAgICAgICAgeG1sbnM6QWhkcmdtPSJodHRwOi8vbnMuYWRvYmUuY29t/mhkci1nYWluLW1hcC8xLjAvIgogICAgICBoZHJnbTpWZXJzaW9uPSIxLjAiPgogICAgICA8Q29udGFpbmVyOkRpcmVjdG9yeT4KICAgICAg" alt="Pro Training Cones">
+        </div>
+        <div class="eq-info">
+          <h4>Pro Training Cones</h4>
+          <p>Custom-spaced training indicators layout used to map immediate spatial constraints, develop micro-footwork patterns, speed turns, and enforce explosive agility drills.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -224,7 +255,7 @@ const INITIAL_VIDEOS = [
   {title: "Linear Track Acceleration Mechanics", desc: "High-definition motion recording analyzing physical first-step sprint mechanics, posture shifts, and linear track acceleration runs.", tag: "SAQ Drills"}
 ];
 
-// THE CORE NAVIGATION SYSTEM FIX
+// CRUCIAL TAB SWITCH ROUTER ROUTINE FIXED
 function showPage(pageId) {
   PAGES.forEach(p => {
     const section = document.getElementById('page-' + p);
