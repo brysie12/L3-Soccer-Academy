@@ -17,8 +17,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--surface);} ::-webkit-scrollbar-thumb{background:var(--green-dim);border-radius:2px;}
 
-/* NAVIGATION FRAME */
+/* NAV STRUCTURE */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);height:64px;background:rgba(8,12,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.08em;color:var(--green);text-decoration:none;cursor:pointer;}
 .nav-links{display:flex;gap:clamp(0.75rem,2vw,2rem);align-items:center;}
@@ -27,12 +28,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-nav{background:var(--green);color:var(--black);border:none;padding:8px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;}
 .btn-nav:hover{background:var(--white);color:var(--black);}
 
-/* TAB STRUCTURE */
+/* TAB ENGINE VISIBILITY */
 .tab-content { display: none; }
 .tab-content.active { display: block !important; }
 .page-wrap{padding-top:64px;min-height:100vh;}
 
-/* HERO LAYOUT */
+/* HERO CONTENT */
 .hero{position:relative;min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(2rem,6vw,5rem) clamp(1.5rem,6vw,5rem);overflow:hidden;}
 .hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(46,204,90,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(46,204,90,0.04) 1px,transparent 1px);background-size:48px 48px;}
 .hero-glow{position:absolute;bottom:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(46,204,90,0.12) 0%,transparent 70%);z-index:0;}
@@ -45,7 +46,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--green);line-height:1;}
 .stat-label{font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;display:block;}
 
-/* FACILITY COMPONENTS */
+/* FACILITY LAYOUTS */
 .facility-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .section-label{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--green);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;}
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;color:var(--white);margin-bottom:1.5rem;}
@@ -55,10 +56,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .fcard p{color:var(--text-muted);font-size:0.88rem;line-height:1.7;}
 .fcard-dim{display:inline-block;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--green);background:var(--green-glow);padding:3px 10px;border-radius:2px;}
 
-/* THE LAB (EQUIPMENT SHOWCASE GRID) */
+/* THE LAB (EQUIPMENT ROWS FRAMEWORK) */
 .container { max-width:1200px;margin:0 auto;padding:4rem 2rem;width:100%;}
 .showcase-title { font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:1px;margin-bottom:2rem;color:var(--white);border-top:1px solid var(--border);padding-top:3rem; }
-.eq-grid { display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px; }
+.eq-grid { display:grid;grid-template-columns:1fr;gap:2rem;max-width:900px;margin-top:2rem; }
 .eq-row { display:grid;grid-template-columns:1fr;gap:2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;align-items:center; }
 @media(min-width:768px){ .eq-row { grid-template-columns:1fr 1.2fr; } }
 .eq-img-box { width:100%;aspect-ratio:4/3;background:var(--surface2);border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative; }
@@ -66,23 +67,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .eq-info h4 { font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:1px;color:var(--green);margin-bottom:0.5rem; }
 .eq-info p { color:var(--text-muted);font-size:0.95rem;line-height:1.6; }
 
-/* SERVICES GRID */
+/* SERVICES PLATES */
 .services-section{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem;}
 .scard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2.5rem;}
 .scard-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:1.2rem;}
 .badge-soccer{background:rgba(46,204,90,0.15);color:var(--green);}
-.badge-multi{background:rgba(255,184,48,0.12);color:var(--amber);}
-.scard h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.8rem;}
-.scard p{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;line-height:1.7;}
 .skill-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
 .skill-list li{display:flex;align-items:flex-start;gap:0.6rem;color:var(--text);font-size:0.88rem;line-height:1.5;}
 .skill-list li::before{content:'▸';color:var(--green);font-size:0.7rem;flex-shrink:0;margin-top:3px;}
-.price-row{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;}
-.price-chip{border:1px solid var(--border);border-radius:4px;padding:10px 16px;flex:1;min-width:130px;}
-.price-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;}
-.price-val{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--green);line-height:1.1;}
-.price-sub{font-size:0.7rem;color:var(--text-dim);}
+
+/* VIDEOS & FAQ STYLING */
+.videos-wrap{max-width:960px;margin:0 auto;padding:4rem 2rem;}
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem;}
+.vcard{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;padding:1.5rem;}
+.vtitle{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:0.5rem;}
+.vdesc{font-size:0.88rem;color:var(--text-muted);line-height:1.6;}
 
 footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--surface);}
 .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--green);letter-spacing:0.08em;}
@@ -114,7 +114,8 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
       <h1>PRO TECHNICAL<br>TRAINING &amp;<br><em>ATHLETIC PERFORMANCE</em></h1>
       <p class="hero-sub">High-intensity, 30-minute sessions in a specialized basement turf facility. Individual ($30) and Two-Player ($25/ea) options available.</p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="showPage('book')">Book Your Session</button>
+        <button class="btn-primary" onclick="showPage('book')">Book Your June Session</button>
+        <button class="btn-outline" onclick="showPage('lab')">Explore The Lab</button>
       </div>
       <div class="hero-stats">
         <div><span class="stat-num">40<span style="font-size:1.1rem">ft</span></span><span class="stat-label">Speed Runway</span></div>
@@ -156,37 +157,122 @@ footer{border-top:1px solid var(--border);padding:2rem clamp(1.5rem,6vw,5rem);di
   <div class="section-title">BRYAN LITTLE</div>
   <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:center;background:var(--surface);padding:2rem;border:1px solid var(--border);border-radius:8px;margin-top:2rem;">
     <div style="width:150px;height:185px;border-radius:6px;overflow:hidden;border:2px solid var(--green);flex-shrink:0;">
-      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAyiAAAAAFJnaHRsb25nAAAIOwAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAMogAAAABSZ2h0bG9uZwAACDsAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAABP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAABWzAAAAAQAAAGgAAACgAAABOAAAwwAAABWXABgAAf/Y/+AAEEpGSUYAAQIAAEgASAAA/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCACgAGgDASIAAhEBAxEB/10ABAAH/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd4eXp7fH/9oADAMBAใช้งานได้ดีมากค่ะ ใช้งานง่าย คล่องตัวดี ถนัดมือ ราคาสมเหตุสมผล คุ้มค่าดีมาก ส่งเร็วแพคเรียบร้อยดี แนะนำค่ะ
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7R5UUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAuAcAgAAAgADHAI3AAgyMDA4MTIxNBwCPAALMTYwOTIxKzEyMDAcAloACldlbGxpbmd0b24cAmUAC05ldyBaZWFsYW5kHAJkAANOWkwcAg8AA1NvYxwCFAAEMjAwOBwCGQAGMDgxMjE0HAIZAAYxNDEyMDgcAhkABHRlYW0cAhkACndlbGxpbmd0b24cAhkAB25ld3Rvd24cAhkABHBhcmscAhkABnNvY2NlchwCGQAEbnpmYxwCGQAMY2hhbXBpb25zaGlwHAIZAAhmb290YmFsbBwCGQAEY2l0eRwCGQAIYXVja2xhbmQcAhkABGRhdmUcAhkAB2xpbnRvdHQcAhkABWJyeWFuHAIZAAZsaXR0bGUcAgcABExpdmUcAlAADERhdmUgTGludG90dBwCbgAhRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJzACFEYXZlIExpbnRvdHQgLyBsaW50b3R0cGhvdG8uY28ubnocAngA41dlbGxpbmd0b24ncyBCcnlhbiBMaXR0bGUgY3Jvc3NlcyBkdXJpbmcgdGhlIE5aIEZvb3RiYWxsIENoYW1waW9uc2hpcCBtYXRjaCBiZXR3ZWVuIFRlYW0gV2VsbGluZ3RvbiBhbmQgT3RhZ28gVW5pdGVkIGF0IE5ld3Rvd24gUGFyaywgV2VsbGluZ3RvbiwgTmV3IFplYWxhbmQgb24gU3VuZGF5LCAxNCBEZWNlbWJlciAyMDA4LiBQaG90bzogRGF2ZSBMaW50b3R0IC8gbGludG90dHBob3RvLmNvLm56HAJpACtOWkZDIC0gV2VsbGluZ3RvbiB2IE90YWdvLCAxNCBEZWNlbWJlciAyMDA4HAJ0ACqpRGF2ZSBMaW50b3R0IDIwMDguIHd3dy5saW50b3R0cGhvdG8uY28ubnocAlwADE5ld3Rvd24gUGFyaxwC3QAMMTowOjA6MDA4MjE5OEJJTQQlAAAAAAAQxMPQKSuZ1VG4QDjBwTssOThCSU0D7QAAAAAAEAEsAAAAAQACASwAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0EDQAAAAAABAAAAB44QklNBBkAAAAAAAQAAAAeOEJJTQPzAAAAAAAJAAAAAAAAAAABADhCSU0ECgAAAAAAAQEAOEJJTScQAAAAAAAKAAEAAAAAAAAAAjhCSU0D9QAAAAAASAAvZmYAAQBsZmYABgAAAAAAAQAvZmYAAQChmZoABgAAAAAAAQAyAAAAAQBaAAAABgAAAAAAAQA1AAAAAQAtAAAABgAAAAAAAThCSU0D+AAAAAAAcAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAA4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0EGgAAAAADRQAAAAYAAAAAAAAAAAAADKIAAAg7AAAACABEAEcATAAwADgAMgAxADkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACDsAAAyiAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAyiAAAAAFJnaHRsb25nAAAIOwAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAMogAAAABSZ2h0bG9uZwAACDsAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAABP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAABWzAAAAAQAAAGgAAACgAAABOAAAwwAAABWXABgAAf/Y/+AAEEpGSUYAAQIAAEgASAAA/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCACgAGgDASIAAhEBAxEB/10ABAAH/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd4eXp7fH/9oADAMBAใช้งานได้ดีมากค่ะ ใช้งานง่าย คล่องตัวดี ถนัดมือ ราคาสมเหตุสมผล คุ้มค่าดีมาก ส่งเร็วแพคเรียบร้อยดี แนะนำค่ะ" alt="Head Coach Bryan Little" style="width:100%;height:100%;object-fit:cover;"/>
+    </div>
+    <div style="color:var(--text-muted);flex:1;min-width:260px;line-height:1.8;">
+      Pushed directly out of elite youth deployment loops, Coach Bryan focuses completely on high-repetition touch execution, velocity mechanics, and restricted-space footwork vectors. No filler conditioning blocks — pure performance execution feedback.
+    </div>
+  </div>
+</div>
+</section>
 
----
+<section id="page-lab" class="tab-content">
+<div class="page-wrap" style="max-width:1200px;margin:0 auto;padding:4rem 2rem;">
+  <div class="section-label">Infrastructure Matrix</div>
+  <div class="section-title">THE PERFORMANCE LAB</div>
+  <p style="color:var(--text-muted);max-width:560px;line-height:1.8;">Our purpose-built basement AstroTurf field isn't an afterthought — every square foot is designed to maximize your athlete's training environment. No distractions. No wasted space.</p>
+  
+  <h3 class="showcase-title">EQUIPMENT SHOWCASE</h3>
+  
+  <div class="eq-grid">
+    <div class="eq-row">
+      <div class="eq-img-box">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4QT+RXhpZgAASUkqAAgAAAANAAABBAABAAAAgQ8AAAEBBAABAAAA0AcAACgBAwABAAAAAgAAAA8BAgAHAAAAqgAAABABAgAIAAAAsQAAADEBAgAVAAAAuQAAADIBAgAUAAAAzgAAABIBAwABAAAAAQAAABMCAwABAAAAAQAAAGmHBAABAAAA8gAAACWIBAABAAAAwwMAABoBBQABAAAA4gAAABsBBQABAAAA6gAAALAEAABHb29nbGUAUGl4ZWwgOABIRFIrIDEuMC44ODg5NDUzNzR6ZAAyMDI2OjA0OjIxIDIxOjQwOjE1AEgAAAABAAAASAAAAAEAAAAqADSkAgAhAAAA8AIAADOkAgAHAAAAEQMAACeIAwABAAAAlAAAACKIAwABAAAAAgAAAJ2CBQABAAAAGAMAAJqCBQABAAAAIAMAABeiAwABAAAAAgAAAJKSAgAEAAAANTE2ABKQAgAHAAAAKAMAAJGSAgAEAAAANTE2ABGQAgAHAAAALwMAAJCSAgAEAAAANTE2ABCQAgAHAAAANgMAAAykAwABAAAAAwAAAAqkAwABAAAAAAAAAAqSBQABAAAAPQMAAAmSAwABAAAAEAAAAAmkAwABAAAAAAAAAAikAwABAAAAAAAAAAeSAwABAAAAAgAAAAukAwABAAAAAAAAAAaSBQABAAAARQMAAAWgBAABAAAApQMAAAWkAwABAAAAGAAAAAWSBQABAAAATQMAAASQAgAUAAAAVQMAAASSCgABAAAAaQMAAASkBQABAAAAcQMAAAOgAwABAAAAAAwAAAOkAwABAAAAAAAAAAOQAgAUAAAAeQMAAAOSCgABAAAAjQMAAAKgAwABAAAA8A8AAAKkAwABAAAAAAAAAAKSBQABAAAAlQMAAAGRBwAEAAAAAQIDAAGgAwABAAAAAQAAAAGjBwABAAAAAQAAAAGkAwABAAAAAQAAAAGSCgABAAAAnQMAAACQBwAEAAAAMDIzMgCgBwAEAAAAMDEwMAAAAABQaXhlbCA4IGJhY2sgY2FtZXJhIDYuOW1tIGYvMS42OABHb29nbGUAqAAAAGQAAADEogAAQEIPAC0wNjowMAAtMDY6MDAALTA2OjAwAPQaAADoAwAA0w0AAOgDAACWAAAAZAAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAAAAYAAAAAAAAAAQAAADIwMjY6MDQ6MjEgMjE6Mzg6NTQAAAAsAFBybyBUcmFpbmluZyBDb25lcwAAAAAAAADqEwAAZAAAAFZwAgBkAAAAAwAAAAEAAAAmAAAAAQAAAAAAAAABAAAAMjAyNDowNDoyMgAEAADAQMAAQAAAAYAAAAoAQMAAQAAAAIAAAAaAQUAAQAAAOYEAAAbAQUAAQAAAO4EAAAAAAAASAAAAAEAAABIAAAAAQAAAP/iAdhJQ0NfUFJPRklMRQABAQAAAcgAAAAABDAAAG1udHJSR0IgWFlaIAfgAAEAAQAAAAAAAGFjc3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAD21gABAAAAANMtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACWRlc2MAAADwAAAAJHJYWVoAAAEUAAAAFGdYWVoAAAEoAAAAFGJYWVoAAAE8AAAAFHd0cHQAAAFQAAAAFHJUUkMAAAFkAAAAKGdUUkMAAAFkAAAAKGJUUkMAAAFkAAAAKGNwcnQAAAGMAAAAPG1sdWMAAAAAAAAAAQAAAAxlblVTAAAACAAAABwAcwBSAEcAQlhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z1hZWiAAAAAAAAD21gABAAAAANMtcGFyYQAAAAAABAAAAAJmZgAA8qcAAA1ZAAAT0AAAClsAAAAAAAAAAG1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/hDFhodHRwOi8vbnMuYWRvYmUuY29t/eHBhY2tldCBiZWdpbj0iZT77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMS4wLWpjMDAzIj4KICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICB4bWxuczpDb250YWluZXI9Imh0dHA6Ly9ucy5nb29nbGUuY29t/cGhvdG9zLzEuMC9jb250YWluZXIvIiAgICAgICAgeG1sbnM6SXRlbT0iaHR0cDovL25zLmdvb2dsZS5jb20vcGhvdG9zLzEuMC9jb250YWluZXIvaXRlbS8iCiAgICAgICAgeG1sbnM6QWhkcmdtPSJodHRwOi8vbnMuYWRvYmUuY29t/mhkci1nYWluLW1hcC8xLjAvIgogICAgICBoZHJnbTpWZXJzaW9uPSIxLjAiPgogICAgICA8Q29udGFpbmVyOkRpcmVjdG9yeT4KICAgICAg" alt="Pro Training Cones">
+      </div>
+      <div class="eq-info">
+        <h4>Pro Training Cones</h4>
+        <p>Custom-spaced training indicators layout used to map immediate spatial constraints, develop micro-footwork patterns, speed turns, and enforce explosive agility drills.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-### Step 2: Swap the URL inside the Code (Crucial Tweak)
-Before pushing the code live onto GitHub, we want to make sure it pulls *your* exact calendar and not a blank demo link:
+<section id="page-faq" class="tab-content">
+<div class="page-wrap" style="max-width:760px;margin:0 auto;padding:4rem 2rem;">
+  <div class="section-label">Academy Intel</div>
+  <div class="section-title">FAQ</div>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;" id="faq-container"></div>
+</div>
+</section>
 
-1. Look closely at the code box above and scroll down to **line 182** (right inside the `` block).
-2. Look for this exact placeholder URL:
-   `https://calendar.google.com/calendar/appointments/schedules/AcZssZ0l80_xH_kZkXz7Kz06LzR3TFk4QkdDOWM4`
-3. Erase that placeholder link, and paste your **true Google Calendar share link** right into those exact quotation marks. 
+<section id="page-videos" class="tab-content">
+<div class="page-wrap">
+  <div class="videos-wrap">
+    <div class="section-label" style="text-align:center;">Vault</div>
+    <div class="section-title" style="text-align:center;">TECHNICAL BREAKDOWN REELS</div>
+    <div class="videos-grid" id="videos-container"></div>
+  </div>
+</div>
+</section>
 
-*(To get your true share link: Go to your Google Calendar schedule settings, click **Share**, click **Copy Link**).*
+<footer>
+  <div class="footer-logo">⚽ L3 SOCCER ACADEMY</div>
+  <div class="footer-copy">© 2026 L3 Soccer Academy · Broomfield, CO</div>
+</footer>
 
----
+<script>
+const PAGES = ['home', 'book', 'coach', 'lab', 'faq', 'videos'];
+const INITIAL_FAQ = [
+  {q: "Where is the training facility located?", a: "Our private performance laboratory environment is located right in Broomfield, CO. Complete structural address parameters are pushed directly via verification email streams instantly upon reservation settlement."},
+  {q: "What ages and performance tiers do you train?", a: "We specialize explicitly in youth player technical literacy profiles. Our 1:1 micro setups adapt seamlessly to challenge advanced club players seeking tighter touch vectors, as well as developing players seeking to lock in fundamental physical baseline acceleration tracks."},
+  {q: "What is the core structure of a 30-minute block session?", a: "Because our specialized indoor space completely eliminates massive pitch distractions, your athlete operates at an intensive high-density repetition profile. Warmups transition into pure physical footwork/ball mastery handling modules within 180 seconds, ensuring a minimum of 200 high-fidelity individual touches before session termination."},
+  {q: "How do parents specify an athletic performance track focus?", a: "When booking your appointment via our integrated Google Schedule frame, a required custom field field allows you to type exactly what focus track your athlete requires for that specific training block."}
+];
+const INITIAL_VIDEOS = [
+  {title: "Ball Mastery Framework Row", desc: "Core technical footwork matrix breakdown testing continuous spatial control variations inside restricted layout quadrants.", tag: "Technical Drill"},
+  {title: "Linear Track Acceleration Mechanics", desc: "High-definition motion recording analyzing physical first-step sprint mechanics, posture shifts, and linear track acceleration runs.", tag: "SAQ Drills"}
+];
 
-### Step 3: Overwrite your main `index.html` file on GitHub
-1. Open a new window tab on your Chromebook and go to **`GitHub.com/brysie12/L3-Soccer-Academy`**.
-2. Click directly on **`index.html`**.
-3. Select the **Pencil Icon (✏️)** in the top right to start editing.
-4. Press **`Ctrl + A`** to select all old existing code lines and hit **`Delete`** to make it completely blank.
-5. **Paste (`Ctrl + V`)** your copied code script package into the editor box.
-6. Click the green **"Commit changes..."** button to push it live onto the server mesh.
+// THE CORE NAVIGATION SYSTEM FIX
+function showPage(pageId) {
+  PAGES.forEach(p => {
+    const section = document.getElementById('page-' + p);
+    const navLink = document.getElementById('nav-' + p);
+    if(section) {
+      if(p === pageId) {
+        section.classList.add('active');
+      } else {
+        section.classList.remove('active');
+      }
+    }
+    if(navLink) navLink.classList.toggle('active', p === pageId);
+  });
+  window.scrollTo({top:0});
+}
 
----
+document.addEventListener("DOMContentLoaded", () => {
+  const faqWrap = document.getElementById('faq-container');
+  if(faqWrap) {
+    faqWrap.innerHTML = INITIAL_FAQ.map((f, i) => `
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <button onclick="toggleFAQ(${i})" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;background:transparent;border:none;cursor:pointer;text-align:left;gap:1rem;">
+          <span style="font-weight:600;color:var(--white);font-size:0.95rem;line-height:1.5;">${f.q}</span>
+          <span id="faq-icon-${i}" style="color:var(--green);font-size:1.2rem;">+</span>
+        </button>
+        <div id="faq-body-${i}" style="display:none;padding:0 1.5rem 1.2rem;">
+          <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;">${f.a}</p>
+        </div>
+      </div>
+    `).join('');
+  }
 
-### Step 4: Force Reload Your Live Website Layout 🔄
-Give Netlify 20 seconds to compile your file assets. Load your site inside your browser panel:
-👉 **`soccercoaching.netlify.app`**
+  const videoWrap = document.getElementById('videos-container');
+  if(videoWrap) {
+    videoWrap.innerHTML = INITIAL_VIDEOS.map(v => `
+      <div class="vcard">
+        <h4 class="vtitle">${v.title}</h4>
+        <p class="vdesc">${v.desc}</p>
+      </div>
+    `).join('');
+  }
+});
 
-On your ASUS Chromebook, execute your deep-clear shortcut command:
-👉 Hold **`Ctrl`** + **`Shift`** and tap **`R`**.
-
-Now look at your website layout! Your core image cards are perfectly preserved, your new navigation updates display a beautiful list of available performance tracks, and clicking the **Book Session** menu tab loads your dynamic Google Calendar schedule engine instantly. Let me know how it looks once it's up!
+function toggleFAQ(i) {
+  const body = document.getElementById('faq-body-' + i);
+  const open = body.style.display === 'block';
+  body.style.display = open ? 'none' : 'block';
+}
+</script>
+</body>
+</html>
